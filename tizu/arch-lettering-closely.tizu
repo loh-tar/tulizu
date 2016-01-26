@@ -1,0 +1,33 @@
+ :tu# Author=loh.tar
+:tu# Desc=The FIGlet standard font with a changed double-storey a
+:tu# The a is grepped from linux_logo_archcustom, couldn't find the FIGlet font
+:tu#
+:tu# c1=Archie
+:tu# Colors1=$Cyan $Bold$White $Normal $Bold$White $Bold$Black
+:tu# c2=Paulchen
+:tu# Colors2=$Bold$Magenta $Magenta $Bold$White $Bold$Magenta $Bold$Black
+:tu# c3=Vader
+:tu# Colors3=$Bold$Black $Normal $Bold$Black $Normal $Bold$Black
+:tu#
+:tu# Opt:r=Variations on rc meeting
+:tu# r1=The FIGlet original
+:tu# r2=Using a V at rc meeting
+:tu#
+:tu# Opt:m=Different message below arch lettering
+:tu# m1=The known arch slogan
+:tu# m2=Welcome message
+:tu# m3=Some system info
+:tu#
+:tuClearScreen:
+:tuC1        :                 _     :tuC2: _ _
+:tuC1        :   ____ _ __ ___| |__  :tuC2:| (_)_ __  _   ___  __
+:tuC1::tu# r1:  (__  | '__/ __| '_ \ :tuC2:| | | '_ \| | | \ \/ /
+:tuC1::tu# r2:  (__  | '__V __| '_ \ :tuC2:| | | '_ \| | | \ \/ /
+:tuC1        : / _ \ | | | (__| | | |:tuC2:| | | | | | |_| |>  <
+:tuC1        : \___,_|_|  \___|_| |_|:tuC2:|_|_|_| |_|\__,_/_/\_\:tuC5:™:tuNC:
+
+:tuC3::tu# m1:  A simple, lightweight Linux distribution.
+:tuC3::tu# m2:  Welcome to \n on :tuC4:\l:tuC3:. Today is \d
+:tuC3::tu# m3:  \s \r :tu42:(\l):tuC3: \d \t
+:tuNC:
+:tu#:

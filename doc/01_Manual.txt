@@ -1,0 +1,231 @@
+                                                           tulizu v0.1, Feb 2016
+Index
+=======
+1- Introduction
+2- Challenge
+3- Use Cases
+4- tizu File Format
+5- Resources
+6- Contact
+7- Thanks To
+8- Copying
+
+
+1- Introduction
+=================
+tulizu is a pure bash script to view and switch Unix issue files.
+Furthermore it may helpful at the creation process of such an issue file when
+there are ASCII-Arts included.
+
+tulizu is shipped with a tiny collection of ASCII-Art issue files ready to
+use for Arch Linux users and as extra the famous BSD Beastie damon.
+
+You are cordially invited to include your fancy issue file to tulizu!
+
+It's name, if it is not clear, is a quibble of 'issue tool' and is in such to be
+pronounced contracted like 'toolishoo'.
+
+
+2- Challenge
+==============
+Unix issue files, delivered by [foo]getty, usually contain so called 'issue
+escapes' which are noted in usual escape manna by a preceding backslash. These
+makes the creation or view of ASCII art included issue files not easier. At this
+point comes tulizu in.
+
+
+3- Use Cases
+==============
+I think there is no need to explain each command in detail, tulizu report by
+help command all what he knows and expect, but you find some notes below.
+
+
+3-1- Benefit Usage
+-------------------
+Run the commands 'list' to view the shipped issue files and 'install' to take
+effect, that's it.
+
+
+3-2- Converting ASCII-Art
+---------------------------
+If you have made an ASCII-Art with an editor like aewan you can convert it by
+using the 'make' command.
+
+
+3-3- Notes To Commands
+------------------------
+install
+  Install is save in a way that the existing issue file is moved as backup to
+  /etc/issue.saved-by-tulizu and can be at anytime restored. The backup is
+  created only if it not already exist, so you can try as many as you like
+  without to lose your original file.
+
+show
+  When you view a file containing a clear screen sequence is these removed
+  before displaying.
+
+
+4- tizu File Format
+======================
+Besides of using an ASCII-Art editor you can edit to, or create from scratch, a
+so called tizu-file. Look at the example, or the others shipped with tulizu at
+/usr/share/tulizu/tizu, how it looks.
+
+tulizu parses any file by the 'make' command for its own tags. These tags
+consist of a colon : followed by the letters tu and usually ends with a colon.
+
+Only for completeness: 'tizu' is short for 'tulizu izu' :-)
+
+
+4-1- tizu File Tags
+---------------------
+:tu#
+  The Comment-Tag. The line will entirely removed. There is no end colon needed.
+  Many of the other tags looks in front as this Comment-Tag, do not be confused
+
+:tu# <c><n>:
+  The Option-Tag is removed in place by make command when the option <c><n> was
+  given, or is kept in place until Comment-Tags will processed :-)
+
+:tu# <c><n>=<hint>
+  The Option-Description-Tag with a hint for the user
+
+:tu# Opt:<c>=<name>
+  The Option-Name-Tag introduce an option with a hint for the user
+
+:tu# Author=<name>
+  You've probably guessed it
+
+:tu# Colors<n>=<color1> [<color2> <colorN> ...]
+:tu# Colors=<color1> [<color2> <colorN> ...]
+  As you see there are two kind of Color-Array-Tags available, with and without
+  a number suffix, just for convenience. But using more then one without suffix
+  will overwrite the previous noted tag. It is treated as if n=1 was used
+
+:tuC<n>:
+  The Color-Tag. Where <n> is a number associated to the color at position in
+  Color-Array-Tag
+
+:tuNC:
+  It's the No-Color-Tag. It's the same as if to note a color as $Normal
+
+:tuDY:
+  The Dummy-Tag. Does nothing at all. See notes below about tags to become an
+  idea why it is available
+
+:tuClearScreen:
+  You may have already an idea. It should be, if used, the first tag on an own
+  line before any effective content
+
+
+4-2- Available Colors And Attributes
+--------------------------------------
+All names must be prefixed by a dollar sign at the Color-Array-Tag, e.g. $Green.
+
+Foreground colors
+  Black, Red, Green, Yellow, Blue, Magenta, Cyan, White
+
+Background colors
+  Are the same as foreground colors but prefixed with 'on', e.g. onRed
+
+Text attributes
+  Normal, Bold, UScore, Blink, RVideo
+
+
+4-3- Notes To Tags
+--------------------
+- The color or attributes tags :tuCn:, :tuNC: and :tuDY: could be expanded with
+  spaces before the end colon, e.g. :tuC1      :
+  The idea is to adjust following content with lines above or below for better
+  human readability. That's the reason of the Dummy-Tag.
+
+- Do not use char c as an own created option. It is used by the Color-Array-Tag.
+
+- An Option-Name-Tag for colors is auto generated when not present.
+
+- Colors and attributes after the Color-Array-Tag can be combined in arbitrary
+  order without spaces between. The effective colors are separated by spaces.
+
+- To ensure each color is shown as noted tulizu will prepend each effective
+  color with the No-Color-Tag.
+
+- To ensure the following login prompt is not colored use as last color tag the
+  No-Color-Tag.
+
+
+5- Resources
+==============
+
+5-1- Shipped Issue Files
+--------------------------
+All issue files are based in some way of postings at an Arch forum talk
+initiated by dave7. If they are almost grepped as posted they are named to
+arch-<user>.issue. So all thanks goes to these good fellows.
+
+arch-dav7.issue
+https://bbs.archlinux.org/viewtopic.php?id=50845
+
+arch-bavardage.issue
+https://bbs.archlinux.org/viewtopic.php?pid=387276#p387276
+
+arch-rson451.issue
+https://bbs.archlinux.org/viewtopic.php?pid=421473#p421473
+
+arch-shapeshifter.issue
+https://bbs.archlinux.org/viewtopic.php?pid=448874#p448874
+
+arch-radu242.issue
+https://bbs.archlinux.org/viewtopic.php?pid=515872#p515872
+
+
+5-2- Issue Escapes
+--------------------
+See man page of agetty, or the getty you use, below 'ISSUE ESCAPES'.
+
+NOTE: Not all escapes are supported by 'show' command, or only with fake data.
+      See source code for details.
+
+
+5-2- Things Of Interest
+-------------------------
+FIGlet fonts
+  www.figlet.org
+
+aewan editor
+  aewan.sourceforge.net
+
+
+6- Contact
+============
+The home of tulizu
+  https://github.com/loh-tar/tulizu
+
+The author of that all
+  loh.tar@googlemail.com
+
+
+7- Thanks To
+==============
+All contributors of stackexchange.com, bash-hackers.org, dict.cc, google.com,
+many more I have miss to note (sorry!), but not github.com for kindly hosting.
+Last but not least: Mom & Dad and archlinux.org
+
+
+8- Copying
+============
+Copyright (C) 2016 loh.tar@googlemail.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+MA 02110-1301, USA.

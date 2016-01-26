@@ -1,0 +1,24 @@
+Priority
+==========
+H: high
+M: medium
+L: low
+
+The priority of things to do are quite arbitrary chosen and may not guaranty
+that things are done in this order not even that they ever be done.
+
+You are kindly invited to take one of these points to start your contribution.
+But you could of cause chose any other, not here listed, issue if you like.
+
+H: parseTizuFile() Add checks not to overwrite known data, exitError if so
+M: parseTizuFile() Add checks to avoid gaps in (option/color) numbering, fix
+   them automaticly?
+L: Make Option-Name-Tag and Option-Description-Tag  mandatory, to force a well
+   written tizu file
+L: Add a command 'gentizu' as opposite to 'make'
+L: Add an option tag to remove parts from the line e.g. :tuR2>:foo bar:<tu:
+   That means with --opt r2 'foo bar' gets removed from the line or only the
+   tags removed in place when no option is given
+L: Add an option tag to insert spaces to the line e.g. :tuI<n>+<m>:
+   That means with --opt i<n> would <m> spaces added in place or only the tag
+   removed in place when no option is given

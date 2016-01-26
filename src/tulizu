@@ -1,0 +1,551 @@
+#!/bin/bash
+#
+#   tulizu: View and customize ASCII art included /etc/issue files
+#
+#   Copyright (C) 2016 loh.tar@googlemail.com
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#   MA 02110-1301, USA.
+
+declare -r myName="tulizu"
+declare -r myVersion="0.1" # Feb 2016
+declare -r myDescription="View and customize ASCII art included /etc/issue files"
+declare -r issuePath="/usr/share/$myName/issue"
+declare -r tizuPath="/usr/share/$myName/tizu"
+declare    tmpFile="$myName-generated.issue"
+# As far as I the FHS understood can we place here our tmp file
+# FIXME: When FHS 3 is common used change to /run/user/...
+declare    tmpPath="/var/run/user/$UID"
+declare    pattern              # Search pattern by doc and list
+
+# More about colors at Arch Wiki
+# wiki.archlinux.org/index.php/Color_Bash_Prompt
+declare -r Normal=$'\e[0m'      # All attributes off
+declare -r Bold=$'\e[1m'        # Or bright, depend on your terminal
+declare -r UScore=$'\e[4m'      # Underscore
+declare -r Blink=$'\e[5m'
+declare -r RVideo=$'\e[7m'      # Reverse video
+
+# Foreground colors
+declare -r Black=$'\e[30m'
+declare -r Red=$'\e[31m'
+declare -r Green=$'\e[32m'
+declare -r Yellow=$'\e[33m'
+declare -r Blue=$'\e[34m'
+declare -r Magenta=$'\e[35m'
+declare -r Cyan=$'\e[36m'
+declare -r White=$'\e[37m'
+
+# Background colors
+declare -r onBlack=$'\e[40m'
+declare -r onRed=$'\e[41m'
+declare -r onGreen=$'\e[42m'
+declare -r onYellow=$'\e[43m'
+declare -r onBlue=$'\e[44m'
+declare -r onMagenta=$'\e[45m'
+declare -r onCyan=$'\e[46m'
+declare -r onWhite=$'\e[47m'
+
+# FIXME: Arch wiki says 'If you have an old /etc/issue that has the "clear TTY" escape sequences..'
+#        So is it obsolete and/or deprecated? wiki.archlinux.org/index.php/Disable_clearing_of_boot_messages
+declare    clearScreen=$'\e\[H\e\[2J'
+
+# Will filled with tizu file settings
+declare -A colorSets
+declare -A optName
+declare -A optDesc
+declare -A optCounter
+declare -A attributes
+
+#
+# Helper Functions
+#
+print() { printf "%s\n" "$*"; }
+info() { printf "$myName: %s\n" "$*" >&2; }
+warn() { printf "${Yellow}WARNING $Normal$myName: %s\n" "$*" >&2; }
+
+exitError() {
+  local func=${2:-${FUNCNAME[1]:3}}
+
+  [[ $func == '--' ]] && unset func || func="$func: "
+
+  printf "${Red}ERROR $Normal$myName: $func%s\n" "$1" >&2
+  exit 1
+}
+
+checkFile() {
+  if [[ -z $1 ]]; then
+    exitError "Need ${2,,} file" ${FUNCNAME[1]:3} # $2 to lower case
+  elif [[ ! -f "$1" ]]; then
+    exitError "$2 file not found: $1" ${FUNCNAME[1]:3}
+  fi
+}
+
+# checkIfRoot() {
+#   if [[ $UID -gt 0 ]]; then
+#     exitError "Only root can change the issue file" ${FUNCNAME[1]:3}
+#   fi
+# }
+
+parseTizuFile() {
+  local inFile=$1
+
+  colorSets=()
+  optName=()
+  optDesc=()
+  optCounter=()
+  attributes=()
+
+  while IFS='=' read lhs rhs
+  do
+    [[ -z $lhs || -z $rhs ]] && continue
+    rhs="${rhs%%\#*}"             # Del in line right comments
+    rhs="${rhs%"${rhs##*[^ ]}"}"  # Del trailing spaces
+    tag=${lhs#:tu# }              # Well, right half of the tag without ':tu# '
+
+    case $tag in
+      Author)     attributes[$tag]=$rhs                               ; ;;
+      Colors?)    colorSets[$tag]=$rhs                                ; ;;
+      Colors)     colorSets["${tag}1"]=$rhs                           ; ;;
+      Desc)       attributes[$tag]=$rhs                               ; ;;
+      Opt:[a-z])  optName[${tag:4}]=$rhs                              ; ;;
+      [a-z][1-9]) optDesc[${tag}]=$rhs; (( optCounter[${tag%?}]++ ))  ; ;;
+    esac
+
+  done < $inFile
+
+  # Special treatment for Colors because of optional number suffix
+  optCounter['c']=${#colorSets[@]}
+
+  if [[ -z ${optName['c']} && ${optCounter['c']} -gt 1 ]]; then
+    optName['c']="Color sets"
+  elif [[ -z ${optName['c']} && ${optCounter['c']} -gt 0 ]]; then
+    optName['c']="Color set"
+  fi
+}
+
+makePattern() {
+  pattern=${1:-'*'}
+  # find will warn when / is in pattern
+  if [[ "$pattern" =~ ^[-_.0-9a-zA-Z]*$ ]]; then
+    pattern=${pattern/./*}
+    pattern="*$pattern*"
+  elif [[ $pattern != '*' ]]; then
+    exitError "Only letters, numbers and -._ are allowed as pattern" ${FUNCNAME[1]:3}
+  fi
+}
+
+#
+# Command Implementations
+#
+cmdDoc() {
+  local docMatch
+  local docPath="/usr/share/doc/$myName"
+
+  makePattern "$1"
+
+  docMatch=($(find "$docPath" -not -type d -iname "$pattern" | sort))
+
+  if [[ ${#docMatch[@]} -gt 1 ]]; then
+    print "Available documentation:"
+    for doc in "${docMatch[@]}" ; do
+      doc="${doc#*/??_}"
+      print "  ${doc%.*}"
+    done
+    if [[ -n $1 ]]
+      then print "Give a more precise pattern than '$1' to show a file"
+      else print "Give a pattern to show a file"
+    fi
+  elif [[ -z "$docMatch" ]]; then
+      print "No manual match '$1'"
+  else
+   less "$docMatch"
+  fi
+}
+
+cmdHelp() {
+    ind="  " # indent
+    tab=$'\t'
+    echo "This is ${myName} (v${myVersion}) - ${myDescription}"
+    echo "Usage:"
+    echo "${ind}${0##*/} <command> [<argument>]"
+    echo "Commands are:"
+    echo "${ind}doc, d [<pattern>]${tab}List or show documentation files"
+
+    [[ $1 == "fullHelp" ]] && helpTxt="You read it now" || helpTxt="Give some more help"
+    echo "${ind}help, h${tab}${tab}$helpTxt"
+
+    echo "${ind}install, i [<file>]${tab}Install <file> as /etc/issue. Default file is <tmpFile>"
+    echo "${ind}list, l [<pattern>]${tab}List issue files shipped with $myName matching <pattern>"
+    echo "${ind}make, m <inFile>${tab}Create new issue file"
+    echo "${ind}restore, r${tab}${tab}Restore /etc/issue file from backup /etc/issue.saved-by-$myName"
+    echo "${ind}show, s [<file>]${tab}Show <file> or current /etc/issue file"
+
+    [[ $1 != "fullHelp" ]] && return
+
+    echo
+    echo "The <pattern> supports only the dot as wildcard which will replaced by an asterisk"
+    echo "The <tmpFile> is $tmpPath/$tmpFile and generated by list or make"
+    echo
+    echo "Commands which take additional options (may prefixed by --):"
+    echo "${ind}list"
+    echo "${ind}${ind}file, f${tab}${tab}Print only a list of files with full path"
+    echo "${ind}${ind}info, i${tab}${tab}Print details about files, like <fileOpt>"
+    echo "${ind}${ind}show, s [<fileOpt>]${tab}Display files in a gallery instead of text list"
+    echo "${ind}Use the long version with hyphen to distinguish from <pattern>"
+    echo
+    echo "${ind}make"
+    echo "${ind}${ind}tofile <outFile>${tab}Create new issue file as <outFile> insted of <tmpFile>"
+    echo "${ind}${ind}opt <fileOpt>${tab}Set option supported by <inFile>"
+    echo "${ind}${ind}nohint${tab}${tab}Print no info header"
+    echo "${ind}${ind}noshow${tab}${tab}Print nothing, just write file"
+    echo
+    echo "Examples:"
+    echo "${ind}Display all about available files matching 'letter':"
+    echo "${ind}${ind}$myName list letter info"
+    echo
+    echo "${ind}Show available files matching 'logo' with color option 3:"
+    echo "${ind}${ind}$myName list logo show c3"
+    echo
+    echo "${ind}Install a file of your taste:"
+    echo "${ind}${ind}$myName l big s c2"
+    echo "${ind}${ind}$myName i             # you will prompted to become root"
+    echo
+    echo "${ind}Generate an issue file out of your own tizu:"
+    echo "${ind}${ind}$myName m your.tizu --opt c3 x2 --tofile your-color3-x-variant2.issue"
+}
+
+cmdInstall() {
+  local file=${1:-"$tmpPath/$tmpFile"}
+  local searchPath=("$PWD" "$tmpPath" "$issuePath")
+  local -i ok=0
+
+#   checkIfRoot
+
+  if [[ -r $file ]]; then
+    ok=1
+  else
+    for path in ${searchPath[@]}; do
+      local fullPath="${path}/${file}"
+      if [[ -r "${fullPath}" ]]; then
+        ok=1
+        file=$fullPath
+        break
+      fi
+    done
+  fi
+
+  if (( !$ok )); then
+    exitError "File not found: $file"
+  fi
+
+  if [[ ! -f "/etc/issue.saved-by-$myName" ]]; then
+    info "Run command: mv /etc/issue /etc/issue.saved-by-$myName"
+    sudo mv /etc/issue /etc/issue.saved-by-$myName
+  fi
+
+  info "Run command: cp $file /etc/issue"
+  sudo cp $file /etc/issue
+}
+
+cmdList() {
+  local subcmd="list"
+  local showOpt=()
+
+  makePattern "$1"
+
+  [[ "$pattern" =~ ^\*--.*$ ]] && pattern="*" || shift
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      file|f|--file)
+          subcmd="file"
+        ;;
+      info|i|--info)
+          subcmd="info"
+        ;;
+      show|s|--show)
+          subcmd="show"
+          showOpt[0]="--opt"
+          shift
+          while [[ $# -gt 0 ]]; do
+            showOpt[${#showOpt[@]}]=$1
+            [[ "$2" =~ ^-- ]] && break
+            shift
+          done;
+          [[ ${#showOpt[@]} == 1 ]] && unset showOpt
+        ;;
+      *)
+          exitError "Unknown option: $1"
+      ;;
+    esac
+    shift
+  done
+
+  local fileMatch=($(find "$issuePath" "$tizuPath" -type f -iname "$pattern" | sort))
+  local fileType
+
+  [[ -z $fileMatch ]] && exitError  "No file match: ${pattern:1:-1}"
+
+  for file in "${fileMatch[@]}" ; do
+    case $subcmd in
+      file)
+          print "$file"
+        ;;
+      info|list)
+          local separator=1
+          if [[ $fileType != ${file##*.} ]]; then
+            [[ ! -z $fileType ]] && print
+            fileType=${file##*.}
+            print "Available $fileType files:"
+            unset separator
+          fi
+
+          parseTizuFile "$file"
+
+        ;;&
+      info)
+          [[ -n $separator ]] && print
+#           file="${file##*/}"
+          local name=${file##*/}; name=${name%.*}
+          print "  Name: $name"
+          [[ ! -z ${attributes['Author']} ]] && print "  Author: ${attributes['Author']}"
+          [[ ! -z ${attributes['Desc']} ]] && print "  Desc: ${attributes['Desc']}"
+          print "  File: ${file}"
+
+          for op in ${!optCounter[@]}; do
+              [[ ! -z ${optName[$op]} ]] && print "  Option $op: ${optCounter[$op]} ${optName[$op]}"
+              if [[ $op == 'c' ]]; then
+                for (( i=0; i < ${#colorSets[@]}; i++ )); do
+                  d="c$((i+1))"
+                  printf "  $d: ${optDesc[$d]}"
+                  local colors=($(eval "echo ${colorSets["Colors$((i+1))"]}"))
+                  pattern=("foo" "bar" "baz" "raz" "faz" "taz" "haz")
+                  local info=""
+                  for (( j=0; j < ${#colors[@]}; j++ )); do
+                    info="$info  $Normal${colors[j]}${pattern[j%7]}"
+                  done
+                  print "$info$Normal"
+                done
+              else
+                for (( i=0; i < ${optCounter[$op]}; i++ )); do
+                  d="$op$((i+1))"
+                  print "  $d: ${optDesc[$d]}"
+                done
+            fi
+          done
+        ;;
+      list)
+          file="${file##*/}"
+          print "  ${file%.*}"
+          local ind="        "
+          [[ ! -z ${attributes['Desc']} ]] && print "$ind${attributes['Desc']}"
+
+          for op in ${!optCounter[@]}; do
+              [[ ${optCounter[$op]} -gt 1 ]] && print "$ind$op: ${optCounter[$op]} ${optName[$op]}"
+          done
+          ;;
+      show)
+          print ">>> $file"
+          cmdShow "$file" "--nohint" ${showOpt[@]}
+          print "<<<"
+        ;;
+      *)
+        exitError "Unknown argument: $subcmd"
+        ;;
+    esac
+  done
+}
+
+cmdMake() {
+  local    inFile=$1
+  local    outFile="$tmpPath/$tmpFile"
+  local    hint="yes"
+  local    show="yes"
+  local -A givenOpt
+
+  checkFile "$inFile" "Source"
+
+  shift
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --nohint|nohint)
+          hint="no"
+        ;;
+      --noshow|noshow)
+          show="no"
+        ;;
+      --tofile|tofile)
+          shift
+          outFile="$1"
+        ;;
+      --opt|opt)
+          shift
+          while [[ $# -gt 0 ]]; do
+            givenOpt["${1:0:1}"]="${1:1}"
+            [[ "$2" =~ ^-- ]] && break;
+            shift
+          done
+        ;;
+      *)
+          exitError "Unknown argument: $1"
+        ;;
+    esac
+    shift
+  done
+
+  parseTizuFile "$inFile"
+
+  local -A useOpt
+  for op in ${!givenOpt[@]}; do
+    if [[ "${!optCounter[@]}" == *"$op"* ]]
+      then useOpt[$op]=${givenOpt[$op]}
+      else warn "File has no option: $op"
+    fi
+  done
+
+  # Set needed but not given options to a default of 1
+  for op in ${!optCounter[@]}; do
+    [[ -z ${useOpt[$op]}  ]] && useOpt[$op]="1"
+  done
+
+  local colors=($(eval "echo ${colorSets["Colors"${useOpt['c']}]}"))
+
+  if [[ $hint == "yes" ]]; then
+    print "Generate file: $outFile"
+    print "Use tizu file: $inFile"
+    info="Use options: "
+    for op in ${!useOpt[@]}; do
+      info="$info$op${useOpt[$op]}  "
+    done
+    print "$info"
+
+    if [[ ${#optCounter[@]} -gt 0 ]]; then
+      for op in ${!useOpt[@]}; do
+        info="$info$op${useOpt[$op]}  "
+        print "Option $op: ${optCounter[$op]} ${optName[$op]}"
+      done
+    fi
+
+    info="Number of defined colors: ${#colors[@]} "
+    pattern=("foo" "bar" "baz" "raz" "faz" "taz" "haz")
+    for (( i=0; i < ${#colors[@]}; i++ )); do
+      info="$info  $Normal${colors[i]}${pattern[i%7]}"
+    done
+    print "$info$Normal"
+  fi
+
+  # Build variable sed scripts
+  for op in ${!useOpt[@]}; do
+    [[ $op == 'c' ]] && continue # Ignore color option here
+    keepOptions="s/:tu# $op${useOpt[$op]} *://g ; $keepOptions"
+  done
+  for (( i=0; i < ${#colors[@]}; i++ )); do
+    j=$(( i+1 ))
+    setColors="s/:tuC$j *:/$Normal${colors[i]}/g ; $setColors"
+  done
+  # Remove the trailing semicolon
+  keepOptions=${keepOptions%;*}
+  setColors=${setColors%;*}
+
+  sed -e "$keepOptions                      # Do it first, and then..."       \
+      -e "/:tu#/d                           # ...remove remaining comments"   \
+      -e "$setColors                        # Now we have less colors to set" \
+      -e "s/:tuClearScreen:/$clearScreen/g"                                   \
+      -e "s/:tuDY *://g                     # Dummy, do nothing"              \
+      -e "s/:tuNC *:/$Normal/g              # No Color"                       \
+      -e 's/\\/\\\\/g                       # Double all backslashes...'      \
+   -r -e 's/\\\\([46bdslmnoOrtuUv])/\\\1/g  # ...but keep issue escapes'      \
+      $inFile > $outFile
+
+  [[ "$show" == "yes" ]] && cmdShow $outFile
+}
+
+cmdRestore() {
+#   checkIfRoot
+  checkFile "/etc/issue.saved-by-$myName" "Backup"
+  info "Run command: mv /etc/issue.saved-by-$myName /etc/issue"
+  sudo mv /etc/issue.saved-by-$myName /etc/issue
+}
+
+cmdShow() {
+  local file=${1:-/etc/issue}
+  local hint=${2:-'yes'}
+
+  checkFile "$file" "Issue"
+
+  if [[ $file == *.tizu ]]; then
+    [[ $hint == "yes" ]] && info "It's a .tizu file? I run 'make' for you..."
+    cmdMake $@ --tofile "$tmpPath/$tmpFile"
+    return
+  fi
+
+  # Do not init variables twice
+  if [[ -z $escDate ]]; then
+    # See manpage of agetty below 'ISSUE ESCAPES'
+    # TODO \4
+    # TODO \6
+    # TODO \b
+    escDate=$(date +'%a %b %e %Y')    # \d FIXME: On my machine differs the real replacement
+    escSysName=$(uname -s)            # \s
+    # TODO \S
+    escTTY="tty1"                     # \l FIXME: ...to show a real name
+    escArch=$(uname -m)               # \m
+    escHostName=$(uname -n)           # \n
+    escNISDomain=$(hostname -d)       # \o
+    # TODO \O
+    escReleaeOS=$(uname -r)           # \r
+    escTime=$(date +%T)               # \t
+    escUser=$(who | wc -l)            # \u
+    escUserS=$([[ $escUser -eq 1 ]] && echo "$escUser user" || echo "$escUser users" )  # \U
+    # TODO \v
+  fi
+
+  sed -e 's/\\\\/\\/g'             \
+      -e "s/$clearScreen//g"       \
+      -e "# TODO s/\\\\4/$foo/g"   \
+      -e "# TODO s/\\\\6/$foo/g"   \
+      -e "# TODO s/\\\\b/$foo/g"   \
+      -e "s/\\\\d/$escDate/g"      \
+      -e "s/\\\\s/$escSysName/g"   \
+      -e "s/\\\\l/$escTTY/g"       \
+      -e "s/\\\\m/$escArch/g"      \
+      -e "s/\\\\n/$escHostName/g"  \
+      -e "s/\\\\o/$escNISDomain/g" \
+      -e "# TODO s/\\\\O/$foo/g"   \
+      -e "s/\\\\r/$escReleaeOS/g"  \
+      -e "s/\\\\t/$escTime/g"      \
+      -e "s/\\\\u/$escUser/g"      \
+      -e "s/\\\\U/$escUserS/g"     \
+      -e "# TODO s/\\\\b/$foo/g"   \
+      $file
+}
+
+#
+# Main
+#
+cmd=$1 && shift
+case $cmd in
+  doc|d)      cmdDoc $@                                               ; ;;
+  -h|\?|-\?)  cmdHelp                                                 ; ;;
+  help|h)     cmdHelp "fullHelp"                                      ; ;;
+  install|i)  cmdInstall $@                                           ; ;;
+  list|l)     cmdList $@                                              ; ;;
+  make|m)     cmdMake $@                                              ; ;;
+  restore|r)  cmdRestore                                              ; ;;
+  show|s)     cmdShow $@                                              ; ;;
+  '')         info "Hello! Try -h or h to get some help"              ; ;;
+  *)          exitError "Unknown command '$cmd', try -h or h" '--'    ; ;;
+esac

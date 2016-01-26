@@ -1,0 +1,30 @@
+:tu# Author=loh.tar
+:tu# Desc=Perky grepped and pimped from aur package linux_logo_archcustom
+:tu#
+:tu# c1=Archie
+:tu# Colors1=$Bold$Cyan $Cyan $Bold$White $Bold$White $Bold$Black
+:tu# c2=Paulchen
+:tu# Colors2=$Bold$Magenta $Magenta $Bold$Magenta $Bold$White $Bold$Black
+:tu# c3=Vader
+:tu# Colors3=$Bold$Black $Normal $Bold$Black $Normal $Bold$Black
+:tu#
+:tuClearScreen:
+:tuC1:                   -`
+:tuC1:                  .o+       :tuDY:            :tuC2:                      _         :tuC3: _   _
+:tuC1:                 `ooo/      :tuDY:            :tuC2:  ____   _ __   ___  | |__      :tuC3:| | (_)  ___     _   _  _   _
+:tuC1:                `+oooo:     :tuDY:            :tuC2: (__  | | '__) / __) |  _ \     :tuC3:| | | | | '_ \  | | | | \ \/ /
+:tuC1:               `+oooooo:    :tuDY:            :tuC2:/ _ \ | | |   | (__  | | | |    :tuC3:| | | | | | | | | |_| |  >  <
+:tuC1:               -+oooooo+:   :tuDY:            :tuC2:\___,_| |_|    \___) |_| |_|    :tuC3:|_| |_| |_| |_|  \__,_| /_/\_\:tuC5:™
+:tuC1:             `/:-:++oooo+:  :tuDY:
+:tuC1:            `/++++/+++++++: :tuDY:            :tuC4:Welcome to \n at \l
+:tuC1:           `/++++++++++++++::tuDY:            :tuC4:Today is \d, now it's \t
+:tuC1:          `/+++${c2}oooo:tuC2:oooo/`          :tuC4:There are \U online
+:tuC1:         ./ooosssso:tuC2:++osssssso+`         :tuC4:Powered by \s \r
+:tuC1:        .ooss:tuC2:ssso-````/ossssss+`
+:tuC2:       -ossss:tuDY:sso.      :ssssssso.
+:tuC2:      :osssss:tuDY:ss/        osssso+++.
+:tuC2:     /ossssss:tuDY:ss/        +ssssooo/-
+:tuC2:   `/ossssso+:tuDY:/:-        -:/+osssso+-
+:tuC2:  `+sso+:-`  :tuDY:               `.-/+oso:
+:tuC2: `++:.       :tuDY:                    `-/ :tuC5:™
+:tuNC:

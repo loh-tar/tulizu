@@ -1,0 +1,24 @@
+:tu# Author=loh.tar
+:tu# Desc=The famous ASCII art daemon by Felix Lee, grepped from linux_logo package
+:tu# Colors=$Red $Green $Blue $Yellow $Bold$White $Normal
+:tuClearScreen:
+:tuC1      :              ,        ,
+:tuC1      :             /(        )`
+:tuC1      :             \ \___   / |
+:tuC1      :             /- _  `-/  '
+:tuC1:            (:tuC6:/\/ \ :tuC1:\   /\
+:tuC1:            :tuC6:/ /   |:tuC1: `    \
+:tuC1:            :tuC3:O O   :tuC6:):tuC1: /    |
+:tuC6      :            `-^--':tuC1:`<     '  :tuC5:Welcome to \n at \l
+:tuC1      :           (_.)  _  )   /  :tuC5:Today is \d, now it's \t
+:tuC1      :            `.___/`    /  :tuC5:There are \U online
+:tuC1      :              `-----' /  :tuC5:\s \r
+:tuC4: <----.    :tuC1: __ / __   \
+:tuC4: <----|====:tuC1:O))):tuC4:==:tuC1:) \) /:tuC4:====
+:tuC4: <----'    :tuC1:`--' `.__,' \
+:tuC1      :              |        |
+:tuC1      :               \       /       /\
+:tuC2      :          ______:tuC1:( (_  / \______/
+:tuC2      :        ,'  ,-----:tuC1:'   |
+:tuC2      :        `--{__________)
+:tuNC:

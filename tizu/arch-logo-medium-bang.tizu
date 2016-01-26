@@ -1,0 +1,29 @@
+:tu# Author=loh.tar
+:tu# Desc=The logo from rson451 with arch lettering inside
+:tu#
+:tu# c1=Archie
+:tu# Colors1=$Bold$Cyan $Cyan $Bold$White $Bold$Cyan
+:tu# c2=Paulchen
+:tu# Colors2=$Bold$Magenta $Magenta $Bold$White $Normal
+:tu# c3=Vader
+:tu# Colors3=$Bold$Black $Normal $Bold$Black $Normal
+:tu#
+:tu# Opt:l=Different writings of 'archlinux'
+:tu# l1=With ' archlinux ' lettering
+:tu# l2=With 'arch  linux' lettering
+:tu# l3=With ' ArchLinux ' lettering
+:tu# l4=With 'Arch  Linux' lettering
+:tu#
+:tuClearScreen:
+        :tuC1:,:tuC2      :
+       :tuC1:/#\:tuC2      :
+      :tuC1:,###\:tuC2      :
+     :tuC1:/#####\:tuC2      :
+    :tuC1:/##:tuC2:,-,##\:tuC2:
+   :tuC2:/##(   )##`:tuDY      :
+  :tuC2:/#.--   --.#\
+:tu# l1: :tuC2:/`:tuC3: arch:tuC4:linux :tuC2:`\
+:tu# l2: :tuC2:/`:tuC3:arch :tuC4: linux:tuC2:`\
+:tu# l3: :tuC2:/`:tuC3: Arch:tuC4:Linux :tuC2:`\
+:tu# l4: :tuC2:/`:tuC3:Arch :tuC4: Linux:tuC2:`\
+:tuNC:
