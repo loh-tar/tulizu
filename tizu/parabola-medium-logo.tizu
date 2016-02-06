@@ -1,0 +1,32 @@
+:tu# Author=karlch
+:tu# Desc=Simple parabola logo with lettering next to it
+:tu#
+:tu# c1=Paraboley
+:tu# Colors1=$Blue $Bold$White $Bold$Blue
+:tu# c2=Archie
+:tu# Colors2=$Bold$Cyan $Cyan $Bold$White
+:tu# c3=Paulchen
+:tu# Colors3=$Bold$Magenta $Magenta $Bold$White
+:tu# c4=Vader
+:tu# Colors4=$Bold$Black $Normal $Bold$Black
+:tu#
+:tuClearScreen:
+:tuC2: Parabola GNU/Linux-libre \r  (\n) (\l)
+:tuC1:
+:tuC1:                        ###     ###
+:tuC1:                ###   ###     #######
+:tuC1:            # ###    ###     #########
+:tuC1:       ###  ###   ###      ##########
+:tuC1:    ##### ###    ###     ###########    :tuC3:88888                  8             8
+:tuC1: ####                   ############    :tuC3:8    O N8888 888 N8888 8 88O   O88D  8  888
+:tuC1:                       ############     :tuC3:88888 8    8 8  O    8 8    8 O    O 8 8    8
+:tuC1:                        ##########      :tuC3:8     8    O 8  8    8 8    8 8    8 8 8    8
+:tuC1:                         ########       :tuC3:8      88888 8   888O8 88888   8888  8  888 8N
+:tuC1:                         #######
+:tuC1:                         #####          :tuC2:   -- a distribution free as in freedom --
+:tuC1:                         ###
+:tuC1:                        ##
+:tuC1:                       #
+
+
+:tuNC:

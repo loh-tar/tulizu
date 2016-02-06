@@ -1,0 +1,45 @@
+:tu# Author=karlch
+:tu# Desc=Black Arch issue with a large anonymous mask
+:tu#
+:tu# c1=DarkRed
+:tu# Colors1=$Red $Bold$Black
+:tu# c2=DarkGreen
+:tu# Colors2=$Green $Bold$Black
+:tu# c3=LightRed
+:tu# Colors3=$Red $Bold$White
+:tu#
+:tu# Opt:m=Different hacking message below the mask
+:tu# m1=Matrix-like welcome slogan
+:tu# m2=Stallman greeting
+:tu#
+:tuC1:  Black Arch \s \m
+
+:tuC1:  \d  --  \t
+:tuC1:
+:tuC2:      mmdmhhyhhyyhhdhhdhmdmNNN
+:tuC2:   NNddhhhyyhhysyyhyhhhyhhdhdmmN
+:tuC2:   NmddhyhhhhsyhoshhhyhdhhhdmdmNN
+:tuC2:  NNNdddmmdhhhyyhhhhhdhyddmmmNNNNN
+:tuC2:  NNN    NNNmdhdhhddydmNNN    NNNN
+:tuC2:  NNNNNNNN   NNmmdddNN    NNNNNNNN
+:tuC2:  NNmmmmmmN N NNdhdmNN  NNNmNmmN NN
+:tuC2:  NNNNNNNNNN NNNhhhN NNNN NNNNNNNN
+:tuC2:  NNNNNNN   NNmNhyhNNNN     NNN NNN
+:tuC2:  NmmhhmddhhdhhdhhymmmddmmmdmdddmNN
+:tuC2:  NdhhdhyhhhyhddhshmmdhhhhhdhhhmmNN
+:tuC2:  NNmmddddddddhhdyyhmmdddddddmmmNN
+:tuC2:   NNNNNNNNNmddmhhhdNdmNNNNNNNNN
+:tuC2:        NmmddNNNNNNNN  NdmNNN
+:tuC2:     NN Nmmdddm      NNmmmmN  N
+:tuC2:     NNNN       NNNN       NN N
+:tuC2:       NNNNmmmmmddmmmmmmmNN
+:tuC2:        NNNNNNNNNNNNNNNN
+:tuC2:         NNNNNNmN   NNNN NN
+:tuC2:           NNNmmN   mNNNN
+:tuC2:            NNNNN   NNNN
+:tuC2:               NN   N
+
+:tuC1::tu# m1:  Welcome home, stranger!
+:tuC1::tu# m2:  Happy hacking!
+
+:tu#: The tuNC sequence is omitted since a colored login prompt is wanted
