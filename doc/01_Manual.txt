@@ -158,8 +158,8 @@ Text attributes
 
 5-1- Shipped Issue Files
 --------------------------
-All issue files are based in some way of postings at an Arch forum talk
-initiated by dave7. If they are almost grepped as posted they are named to
+The following issue files are based in some way of postings at an Arch forum
+talk initiated by dave7. If they are almost grepped as posted they are named to
 arch-<user>.issue. So all thanks goes to these good fellows.
 
 arch-dav7.issue
@@ -176,6 +176,12 @@ https://bbs.archlinux.org/viewtopic.php?pid=448874#p448874
 
 arch-radu242.issue
 https://bbs.archlinux.org/viewtopic.php?pid=515872#p515872
+
+Additional issues added thanks to pull requests on the github homepage:
+
+black_arch-large-anon-mask.issue
+
+parabola-medium-logo-lettering.issue
 
 
 5-2- Issue Escapes
