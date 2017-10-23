@@ -1,0 +1,17 @@
+:tu# Author=loh.tar with work by rgm3
+:tu# See www.raspberrypi.org/forums/viewtopic.php?t=5494
+:tu# Desc=Little unicode logo and some system info
+:tu# The green on the berry may not be centered. Terminal or font issue?
+:tu#
+:tu# c1=RasPi
+:tu# Colors1=$Bold$Green $Green $Bold$White $White $Red $Bold$Red
+:tu# c2=Vader
+:tu# Colors2=$Bold$Black $Normal $Bold$Black $Normal $Bold$Black
+:tu#
+:tuClearScreen:
+:tuC2:  ⋱⋱ ⋰⋰
+:tuC5:  ◖ ● ◗
+:tuC5: ◖ ● ● ◗ :tuC3:  pi: \n, \s \r
+:tuC5:  ◖ ● ◗  :tuC3:  ip: \4 (\l)
+:tuC5:    •
+:tuNC:

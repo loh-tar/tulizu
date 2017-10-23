@@ -1,0 +1,21 @@
+:tu# Author=loh.tar with work by MartinLenord and piksel
+:tu# See www.raspberrypi.org/forums/viewtopic.php?t=5494
+:tu# Desc=Logo with lettering and some system info
+:tu#
+:tu# c1=RasPi
+:tu# Colors1=$Bold$Green $Green $Bold$White $Bold$Black $Red $Bold$Red
+:tu# c2=Vader
+:tu# Colors2=$Bold$Black $Normal $Bold$Black $Normal $Bold$Black
+:tu#
+:tuClearScreen:
+:tuC2:    .~~.   .~~.
+:tuC2:   '. \ ' ' / .'
+:tuC5:    .~ .~~~..~.    :tuC3:                   _                          _
+:tuC5:   : .~.'~'.~. :   :tuC3:   ___ ___ ___ ___| |_ ___ ___ ___ _ _    ___|_|
+:tuC5:  ~ (   ) (   ) ~  :tuC3:  |  _| .'|_ -| . | . | -_|  _|  _| | |  | . | |
+:tuC5: ( : '~'.~.'~' : ) :tuC3:  |_| |__,|___|  _|___|___|_| |_| |_  |  |  _|_|
+:tuC5:  ~ .~ (   ) ~. ~  :tuC3:              |_|                 |___|  |_|
+:tuC5:   (  : '~' :  )   :tuC4:  pi: \n, \s \r
+:tuC5:    '~ .~~~. ~'    :tuC4:  ip: \4 (\l)
+:tuC5:        '~'
+:tuNC:
