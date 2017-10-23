@@ -495,7 +495,7 @@ cmdShow() {
   # Do not init variables twice
   if [[ -z $escDate ]]; then
     # See manpage of agetty below 'ISSUE ESCAPES'
-    # TODO \4
+    escIp4="192.168.123.45"           # \4 FIXME: Fill with non fake data
     # TODO \6
     # TODO \b
     escDate=$(date +'%a %b %e %Y')    # \d FIXME: On my machine differs the real replacement
@@ -515,7 +515,7 @@ cmdShow() {
 
   sed -e 's/\\\\/\\/g'             \
       -e "s/$clearScreen//g"       \
-      -e "# TODO s/\\\\4/$foo/g"   \
+      -e "s/\\\\4/$escIp4/g"       \
       -e "# TODO s/\\\\6/$foo/g"   \
       -e "# TODO s/\\\\b/$foo/g"   \
       -e "s/\\\\d/$escDate/g"      \
