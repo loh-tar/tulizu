@@ -1,4 +1,4 @@
-                                                           tulizu v0.1, Feb 2016
+                                                           tulizu v0.2, Okt 2017
 Index
 =======
 1- Introduction
@@ -17,10 +17,10 @@ tulizu is a pure bash script to view and switch Unix issue files.
 Furthermore it may helpful at the creation process of such an issue file when
 there are ASCII-Arts included.
 
-tulizu is shipped with a tiny collection of ASCII-Art issue files ready to
-use for Arch Linux users and as extra the famous BSD Beastie damon.
+tulizu is shipped with a modest collection of ASCII art issue/tizu files ready
+to use for Arch Linux users and some samples for other systems.
 
-You are cordially invited to include your fancy issue file to tulizu!
+You are cordially invited to include your fancy issue/tizu file to tulizu!
 
 It's name, if it is not clear, is a quibble of 'issue tool' and is in such to be
 pronounced contracted like 'toolishoo'.

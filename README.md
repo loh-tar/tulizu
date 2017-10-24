@@ -4,8 +4,8 @@
 Furthermore it may helpful at the creation process of such an issue file when
 there are ASCII arts included.
 
+**Last version is 0.2 released Okt, 2017**
 
-**Last, and very first, version is 0.1 released Feb, 2016**
 Details about **tulizu** you can find in the doc directory and on
 the [**tulizu** home page](http://loh-tar.github.io/tulizu/) with some
 screenshots.

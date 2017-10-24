@@ -20,7 +20,7 @@
 #   MA 02110-1301, USA.
 
 declare -r myName="tulizu"
-declare -r myVersion="0.1" # Feb 2016
+declare -r myVersion="0.2" # Okt 2017
 declare -r myDescription="View and customize ASCII art included /etc/issue files"
 declare -r issuePath="/usr/share/$myName/issue"
 declare -r tizuPath="/usr/share/$myName/tizu"
