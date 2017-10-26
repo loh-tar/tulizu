@@ -31,15 +31,19 @@ faked to become more handy. So don't be curious if you can't reproduce the exact
 output.
 
 #### A brief glimpse of the collection
+
 ![Brief Glimpse](brief-glimpse-collection.png)
 
 #### List available files matching "arch*tizu"
+
 ![List Files](list-arch-tizu.png)
 
 #### Show details of files
+
 ![List Info](list-tizu-info.png)
 
 #### Show variations of files using different color settings
+
 ![Variations](show-variations.png)
 
 #### tulizu with tbsm
