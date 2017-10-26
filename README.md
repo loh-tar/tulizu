@@ -42,6 +42,13 @@ output.
 #### Show variations of files using different color settings
 ![Variations](show-variations.png)
 
+#### tulizu with tbsm
+
+That's how my screen looks after login ready to go with
+[tbsm](https://loh-tar.github.io/tbsm/).
+
+![tulizu with tbsm](login-standard-theme-and-tulizu.png)
+
 ### Further Readings
 
 All details about **tulizu** you can find in the [doc directory](https://github.com/loh-tar/tulizu/tree/master/doc).
