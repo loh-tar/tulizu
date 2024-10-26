@@ -2,7 +2,7 @@
 :tu# Desc=Logo with lettering and some system info
 :tu#
 :tu# c1=RasPi
-:tu# Colors1=$Bold$Green $Green $Bold$White $Bold$Black $Red $Bold$Red
+:tu# Colors1=$Bold$Red $Red $Bold$White $Bold$Black $Red $Bold$Red
 :tu# c2=Vader
 :tu# Colors2=$Bold$Black $Normal $Bold$Black $Normal $Bold$Black
 :tu#
