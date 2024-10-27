@@ -1,24 +1,24 @@
 :tu# Author=vidy007
 :tu# Desc=Logo with lettering
 :tu#
-:tu# Colors=$Red $Bold$White
+:tu# Colors=$Bold$White $Bold$Red
 :tu#
 :tuClearScreen:
-:tuC1:       _,met$$$$$gg.             :tuC5:             dddddddd                   bbbbbbbb                                                       
-:tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC5:             d::::::d                   b::::::b              iiii                                     
-:tuC1:  ,g$$P"         """Y$$.".       :tuC5:             d::::::d                   b::::::b             i::::i                                    
-:tuC1: ,$$P'               `$$$.       :tuC5:             d::::::d                   b::::::b              iiii                                     
-:tuC1:',$$P       ,ggs.     `$$b:      :tuC5:             d:::::d                     b:::::b                                                       
-:tuC1:`d$$'     ,$P"'   :tuC5:.:tuC1:    $$$       :tuC5:     ddddddddd:::::d     eeeeeeeeeeee    b:::::bbbbbbbbb    iiiiiii   aaaaaaaaaaaaa  nnnn  nnnnnnnn    
-:tuC1: $$P      d$'     :tuC5:,:tuC1:    $$$P      :tuC5:   dd::::::::::::::d   ee::::::::::::ee  b::::::::::::::bb  i:::::i   a::::::::::::a n:::nn::::::::nn  
-:tuC1: $$:      $.   :tuC5:-:tuC1:    ,d$$'        :tuC5:  d::::::::::::::::d  e::::::eeeee:::::eeb::::::::::::::::b  i::::i   aaaaaaaaa:::::an::::::::::::::nn 
-:tuC1: $$;      Y$b._   _,d$P'         :tuC5: d:::::::ddddd:::::d e::::::e     e:::::eb:::::bbbbb:::::::b i::::i            a::::ann:::::::::::::::n
-:tuC1: Y$$.    :tuC5:`.:tuC1:`"Y$$$$P"'            :tuC5: d::::::d    d:::::d e:::::::eeeee::::::eb:::::b    b::::::b i::::i     aaaaaaa:::::a  n:::::nnnn:::::n
-:tuC1: `$$b      :tuC5:"-.__:tuC1:                 :tuC5: d:::::d     d:::::d e:::::::::::::::::e b:::::b     b:::::b i::::i   aa::::::::::::a  n::::n    n::::n
-:tuC1:  `Y$$                           :tuC5: d:::::d     d:::::d e::::::eeeeeeeeeee  b:::::b     b:::::b i::::i  a::::aaaa::::::a  n::::n    n::::n
-:tuC1:   `Y$$.                         :tuC5: d:::::d     d:::::d e:::::::e           b:::::b     b:::::b i::::i a::::a    a:::::a  n::::n    n::::n
-:tuC1:     `$$b.                       :tuC5: d::::::ddddd::::::dde::::::::e          b:::::bbbbbb::::::bi::::::ia::::a    a:::::a  n::::n    n::::n
-:tuC1:       `Y$$b.                    :tuC5:  d:::::::::::::::::d e::::::::eeeeeeee  b::::::::::::::::b i::::::ia:::::aaaa::::::a  n::::n    n::::n
-:tuC1:          `"Y$b._                :tuC5:   d:::::::::ddd::::d  ee:::::::::::::e  b:::::::::::::::b  i::::::i a::::::::::aa:::a n::::n    n::::n
-:tuC1:             `"""                :tuC5:    ddddddddd   ddddd    eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   iiiiiiii  aaaaaaaaaa  aaaa nnnnnn    nnnnnn
+:tuC1:       _,met$$$$$gg.             :tuC1:             dddddddd                   bbbbbbbb                                                       
+:tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC1:             d::::::d                   b::::::b              iiii                                     
+:tuC1:  ,g$$P"         """Y$$.".       :tuC1:             d::::::d                   b::::::b             i::::i                                    
+:tuC1: ,$$P'               `$$$.       :tuC1:             d::::::d                   b::::::b              iiii                                     
+:tuC1:',$$P       ,ggs.     `$$b:      :tuC1:             d:::::d                     b:::::b                                                       
+:tuC1:`d$$'     ,$P"'   :tuC2:.:tuC1:    $$$       :tuC1:     ddddddddd:::::d     eeeeeeeeeeee    b:::::bbbbbbbbb    iiiiiii   aaaaaaaaaaaaa  nnnn  nnnnnnnn    
+:tuC1: $$P      d$'     :tuC2:,:tuC1:    $$$P      :tuC1:   dd::::::::::::::d   ee::::::::::::ee  b::::::::::::::bb  i:::::i   a::::::::::::a n:::nn::::::::nn  
+:tuC1: $$:      $.   :tuC2:-:tuC1:    ,d$$'        :tuC1:  d::::::::::::::::d  e::::::eeeee:::::eeb::::::::::::::::b  i::::i   aaaaaaaaa:::::an::::::::::::::nn 
+:tuC1: $$;      Y$b._   _,d$P'         :tuC1: d:::::::ddddd:::::d e::::::e     e:::::eb:::::bbbbb:::::::b i::::i            a::::ann:::::::::::::::n
+:tuC1: Y$$.    :tuC2:`.:tuC1:`"Y$$$$P"'            :tuC1: d::::::d    d:::::d e:::::::eeeee::::::eb:::::b    b::::::b i::::i     aaaaaaa:::::a  n:::::nnnn:::::n
+:tuC1: `$$b      :tuC2:"-.__:tuC1:                 :tuC1: d:::::d     d:::::d e:::::::::::::::::e b:::::b     b:::::b i::::i   aa::::::::::::a  n::::n    n::::n
+:tuC1:  `Y$$                           :tuC1: d:::::d     d:::::d e::::::eeeeeeeeeee  b:::::b     b:::::b i::::i  a::::aaaa::::::a  n::::n    n::::n
+:tuC1:   `Y$$.                         :tuC1: d:::::d     d:::::d e:::::::e           b:::::b     b:::::b i::::i a::::a    a:::::a  n::::n    n::::n
+:tuC1:     `$$b.                       :tuC1: d::::::ddddd::::::dde::::::::e          b:::::bbbbbb::::::bi::::::ia::::a    a:::::a  n::::n    n::::n
+:tuC1:       `Y$$b.                    :tuC1:  d:::::::::::::::::d e::::::::eeeeeeee  b::::::::::::::::b i::::::ia:::::aaaa::::::a  n::::n    n::::n
+:tuC1:          `"Y$b._                :tuC1:   d:::::::::ddd::::d  ee:::::::::::::e  b:::::::::::::::b  i::::::i a::::::::::aa:::a n::::n    n::::n
+:tuC1:             `"""                :tuC1:    ddddddddd   ddddd    eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   iiiiiiii  aaaaaaaaaa  aaaa nnnnnn    nnnnnn
 :tuNC:
