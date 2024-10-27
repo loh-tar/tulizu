@@ -5,9 +5,9 @@
 :tu#
 :tuClearScreen:
 :tuC1:       _,met$$$$$gg.             :tuC1:             dddddddd                   bbbbbbbb                                                       
-:tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC1:             d::::::d                   b::::::b              iiii                                     
-:tuC1:  ,g$$P"         """Y$$.".       :tuC1:             d::::::d                   b::::::b             i::::i                                    
-:tuC1: ,$$P'               `$$$.       :tuC1:             d::::::d                   b::::::b              iiii                                     
+:tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC1:             d::::::d                   b::::::b              :tuC2:iiii:tuC1:                                     
+:tuC1:  ,g$$P"         """Y$$.".       :tuC1:             d::::::d                   b::::::b             :tuC2:i::::i:tuC1:                                    
+:tuC1: ,$$P'               `$$$.       :tuC1:             d::::::d                   b::::::b              :tuC2:iiii:tuC1:                                     
 :tuC1:',$$P       ,ggs.     `$$b:      :tuC1:             d:::::d                     b:::::b                                                       
 :tuC1:`d$$'     ,$P"'   :tuC2:.:tuC1:    $$$       :tuC1:     ddddddddd:::::d     eeeeeeeeeeee    b:::::bbbbbbbbb    iiiiiii   aaaaaaaaaaaaa  nnnn  nnnnnnnn    
 :tuC1: $$P      d$'     :tuC2:,:tuC1:    $$$P      :tuC1:   dd::::::::::::::d   ee::::::::::::ee  b::::::::::::::bb  i:::::i   a::::::::::::a n:::nn::::::::nn  
