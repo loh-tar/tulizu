@@ -504,7 +504,10 @@ cmdShow() {
     escTTY="tty1"                     # \l FIXME: ...to show a real name
     escArch=$(uname -m)               # \m
     escHostName=$(uname -n)           # \n
-    escNISDomain=$(hostname -d)       # \o
+    if which hostname 2>/dev/null     # \o 'hostname -d' is not always available
+      then escNISDomain=$(hostname -d)
+      else escNISDomain="(none)"
+    fi
     # TODO \O
     escReleaeOS=$(uname -r)           # \r
     escTime=$(date +%T)               # \t
