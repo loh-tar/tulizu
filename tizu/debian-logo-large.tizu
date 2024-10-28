@@ -1,6 +1,5 @@
-:tu# Author=vidy007
+:tu# Author=vidy007 
 :tu# Desc=Logo with lettering
-:tu#
 :tu# Colors=$Bold$White $Bold$Red
 :tu#
 :tuClearScreen:
