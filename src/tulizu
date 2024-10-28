@@ -143,7 +143,7 @@ makePattern() {
   pattern=${1:-'*'}
   # find will warn when / is in pattern
   if [[ "$pattern" =~ ^[-_.0-9a-zA-Z]*$ ]]; then
-    pattern=${pattern/./*}
+    pattern=${pattern//./*}
     pattern="*$pattern*"
   elif [[ $pattern != '*' ]]; then
     exitError "Only letters, numbers and -._ are allowed as pattern" "${FUNCNAME[1]:3}"
