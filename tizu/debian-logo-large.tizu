@@ -3,7 +3,6 @@
 :tu# Colors1=$Bold$White $Bold$Red
 :tu# Colors2=$Bold$White $Bold$Magenta
 :tu# Colors3=$Bold$White $White
-:tu#
 :tuClearScreen:
 :tuC1:       _,met$$$$$gg.             :tuC1:             dddddddd                   bbbbbbbb                                                       
 :tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC1:             d::::::d                   b::::::b              :tuC2:iiii:tuC1:                                     
