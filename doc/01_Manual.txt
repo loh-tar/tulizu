@@ -36,14 +36,49 @@ point comes tulizu in.
 
 3- Use Cases
 ==============
-I think there is no need to explain each command in detail, tulizu report by
+I think there is no need to explain each command in detail. tulizu report by
 help command all what he knows and expect, but you find some notes below.
 
 
 3-1- Benefit Usage
 -------------------
 Run the commands 'list' to view the shipped issue files and 'install' to take
-effect, that's it.
+effect, that's it. To make it easier for you, here are some steps how to get
+started: Let's assume you are looking for an Arch file...
+
+  $ tulizu list arch
+
+You got a surprising long list. Read careful. Now you can filter these list even
+more, e.g. by add 'logo' to the pattern...
+
+  $ tulizu list arch.logo
+
+The list got much shorter. To get more details about each file, add the info
+sub-command...
+
+  $ tulizu list arch.logo info
+
+No big surprise, you see more information. But a picture says more than 1000
+words. So replace info by show command...
+
+  $ tulizu list arch.logo show
+
+Yeah! That's better! Let's assume you have a favorite, then you will enhance the
+search pattern until only this one is shown, e.g...
+
+  $ tulizu list arch.logo.cond show
+
+OK. But your prefer less colors, so you try an option or two...
+
+  $ tulizu list arch.logo.cond show c3 m3
+
+You play around with pattern and options and want finally use the one you have
+last shown. Then you run...
+
+  $ tulizu install
+
+Switch to some free tty. If there is no effect, logging in and out may do the
+trick. Have fun!
 
 
 3-2- Converting ASCII-Art
