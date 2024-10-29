@@ -60,28 +60,7 @@ All details about **tulizu** you can find in the
 
 ### Install
 
-#### Packages
-
-Arch users find it in [AUR](https://aur.archlinux.org/packages/tulizu/)
-
-#### From Source
-
-_cd_ into the downloaded source tree and simply run:
-
-    sudo make install
-
-To remove run:
-
-    sudo make uninstall
-
-### Post Install Tasks
-
-It may wise to run:
-
-    tulizu doc man
-
-If you only want to pick one of the shipped files for your pleasure, it's save
-to uninstall **tulizu** afterwards.
+See README of the [project page](https://github.com/loh-tar/tulizu)
 
 ### License
 
