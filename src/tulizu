@@ -19,6 +19,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
+# shellcheck disable=SC2034  # Unused variables - See HINT at the colors
+
 declare -r myName="tulizu"
 declare -r myVersion="0.2" # Okt 2017
 declare -r myDescription="View and customize ASCII art included /etc/issue files"
@@ -32,6 +34,7 @@ declare    pattern              # Search pattern by doc and list
 
 # More about colors at Arch Wiki
 # wiki.archlinux.org/index.php/Color_Bash_Prompt
+# HINT: shellcheck complains about most of these color declarations, but we use these indirect
 declare -r Normal=$'\e[0m'      # All attributes off
 declare -r Bold=$'\e[1m'        # Or bright, depend on your terminal
 declare -r UScore=$'\e[4m'      # Underscore
@@ -87,9 +90,9 @@ exitError() {
 
 checkFile() {
   if [[ -z $1 ]]; then
-    exitError "Need ${2,,} file" ${FUNCNAME[1]:3} # $2 to lower case
+    exitError "Need ${2,,} file" "${FUNCNAME[1]:3}" # $2 to lower case
   elif [[ ! -f "$1" ]]; then
-    exitError "$2 file not found: $1" ${FUNCNAME[1]:3}
+    exitError "$2 file not found: $1" "${FUNCNAME[1]:3}"
   fi
 }
 
@@ -108,7 +111,7 @@ parseTizuFile() {
   optCounter=()
   attributes=()
 
-  while IFS='=' read lhs rhs
+  while IFS='=' read -r lhs rhs
   do
     [[ -z $lhs || -z $rhs ]] && continue
     rhs="${rhs%%\#*}"             # Del in line right comments
@@ -124,7 +127,7 @@ parseTizuFile() {
       [a-z][1-9]) optDesc[${tag}]=$rhs; (( optCounter[${tag%?}]++ ))  ; ;;
     esac
 
-  done < $inFile
+  done < "$inFile"
 
   # Special treatment for Colors because of optional number suffix
   optCounter['c']=${#colorSets[@]}
@@ -140,10 +143,10 @@ makePattern() {
   pattern=${1:-'*'}
   # find will warn when / is in pattern
   if [[ "$pattern" =~ ^[-_.0-9a-zA-Z]*$ ]]; then
-    pattern=${pattern/./*}
+    pattern=${pattern//./*}
     pattern="*$pattern*"
   elif [[ $pattern != '*' ]]; then
-    exitError "Only letters, numbers and -._ are allowed as pattern" ${FUNCNAME[1]:3}
+    exitError "Only letters, numbers and -._ are allowed as pattern" "${FUNCNAME[1]:3}"
   fi
 }
 
@@ -156,7 +159,7 @@ cmdDoc() {
 
   makePattern "$1"
 
-  docMatch=($(find "$docPath" -not -type d -iname "$pattern" | sort))
+  mapfile -t docMatch < <(find "$docPath" -not -type d -iname "$pattern" | sort)
 
   if [[ ${#docMatch[@]} -gt 1 ]]; then
     print "Available documentation:"
@@ -168,10 +171,10 @@ cmdDoc() {
       then print "Give a more precise pattern than '$1' to show a file"
       else print "Give a pattern to show a file"
     fi
-  elif [[ -z "$docMatch" ]]; then
+  elif [[ ${#docMatch[@]} == 0 ]]; then
       print "No manual match '$1'"
   else
-   less "$docMatch"
+   less "${docMatch[0]}"
   fi
 }
 
@@ -234,10 +237,10 @@ cmdInstall() {
 
 #   checkIfRoot
 
-  if [[ -r $file ]]; then
+  if [[ -r "$file" ]]; then
     ok=1
   else
-    for path in ${searchPath[@]}; do
+    for path in "${searchPath[@]}"; do
       local fullPath="${path}/${file}"
       if [[ -r "${fullPath}" ]]; then
         ok=1
@@ -247,17 +250,17 @@ cmdInstall() {
     done
   fi
 
-  if (( !$ok )); then
+  if (( !ok )); then
     exitError "File not found: $file"
   fi
 
   if [[ ! -f "/etc/issue.saved-by-$myName" ]]; then
     info "Run command: mv /etc/issue /etc/issue.saved-by-$myName"
-    sudo mv /etc/issue /etc/issue.saved-by-$myName
+    sudo mv "/etc/issue" "/etc/issue.saved-by-$myName"
   fi
 
   info "Run command: cp $file /etc/issue"
-  sudo cp $file /etc/issue
+  sudo cp "$file" "/etc/issue"
 }
 
 cmdList() {
@@ -266,7 +269,10 @@ cmdList() {
 
   makePattern "$1"
 
-  [[ "$pattern" =~ ^\*--.*$ ]] && pattern="*" || shift
+  if [[ "$pattern" =~ ^\*--.*$ ]]
+    then pattern="*"
+    else shift
+  fi
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -294,10 +300,10 @@ cmdList() {
     shift
   done
 
-  local fileMatch=($(find "$issuePath" "$tizuPath" -type f -iname "$pattern" | sort))
-  local fileType
+  mapfile -t fileMatch < <(find "$issuePath" "$tizuPath" -type f -iname "$pattern" | sort)
+  [[ ${#fileMatch[@]} == 0 ]] && exitError  "No file match: ${pattern:1:-1}"
 
-  [[ -z $fileMatch ]] && exitError  "No file match: ${pattern:1:-1}"
+  local fileType
 
   for file in "${fileMatch[@]}" ; do
     case $subcmd in
@@ -306,8 +312,8 @@ cmdList() {
         ;;
       info|list)
           local separator=1
-          if [[ $fileType != ${file##*.} ]]; then
-            [[ ! -z $fileType ]] && print
+          if [[ $fileType != "${file##*.}" ]]; then
+            [[ -n $fileType ]] && print
             fileType=${file##*.}
             print "Available $fileType files:"
             unset separator
@@ -321,17 +327,18 @@ cmdList() {
 #           file="${file##*/}"
           local name=${file##*/}; name=${name%.*}
           print "  Name: $name"
-          [[ ! -z ${attributes['Author']} ]] && print "  Author: ${attributes['Author']}"
-          [[ ! -z ${attributes['Desc']} ]] && print "  Desc: ${attributes['Desc']}"
+          [[ -n ${attributes['Author']} ]] && print "  Author: ${attributes['Author']}"
+          [[ -n ${attributes['Desc']} ]] && print "  Desc: ${attributes['Desc']}"
           print "  File: ${file}"
 
-          for op in ${!optCounter[@]}; do
-              [[ ! -z ${optName[$op]} ]] && print "  Option $op: ${optCounter[$op]} ${optName[$op]}"
+          for op in "${!optCounter[@]}"; do
+              [[ -n ${optName[$op]} ]] && print "  Option $op: ${optCounter[$op]} ${optName[$op]}"
               if [[ $op == 'c' ]]; then
                 for (( i=0; i < ${#colorSets[@]}; i++ )); do
                   d="c$((i+1))"
-                  printf "  $d: ${optDesc[$d]}"
-                  local colors=($(eval "echo ${colorSets["Colors$((i+1))"]}"))
+                  printf "  %s: %s" "$d" "${optDesc[$d]}"
+                  # Translate the color-set by eval into escape codes defined at top of this file
+                  IFS=" " read -r -a colors <<< "$(eval "echo ${colorSets["Colors$((i+1))"]}")"
                   pattern=("foo" "bar" "baz" "raz" "faz" "taz" "haz")
                   local info=""
                   for (( j=0; j < ${#colors[@]}; j++ )); do
@@ -351,15 +358,15 @@ cmdList() {
           file="${file##*/}"
           print "  ${file%.*}"
           local ind="        "
-          [[ ! -z ${attributes['Desc']} ]] && print "$ind${attributes['Desc']}"
+          [[ -n ${attributes['Desc']} ]] && print "$ind${attributes['Desc']}"
 
-          for op in ${!optCounter[@]}; do
+          for op in "${!optCounter[@]}"; do
               [[ ${optCounter[$op]} -gt 1 ]] && print "$ind$op: ${optCounter[$op]} ${optName[$op]}"
           done
           ;;
       show)
           print ">>> $file"
-          cmdShow "$file" "--nohint" ${showOpt[@]}
+          cmdShow "$file" "--nohint" "${showOpt[@]}"
           print "<<<"
         ;;
       *)
@@ -409,31 +416,32 @@ cmdMake() {
   parseTizuFile "$inFile"
 
   local -A useOpt
-  for op in ${!givenOpt[@]}; do
-    if [[ "${!optCounter[@]}" == *"$op"* ]]
+  for op in "${!givenOpt[@]}"; do
+    if [[ "${!optCounter[*]}" == *"$op"* ]]
       then useOpt[$op]=${givenOpt[$op]}
       else warn "File has no option: $op"
     fi
   done
 
   # Set needed but not given options to a default of 1
-  for op in ${!optCounter[@]}; do
+  for op in "${!optCounter[@]}"; do
     [[ -z ${useOpt[$op]}  ]] && useOpt[$op]="1"
   done
 
-  local colors=($(eval "echo ${colorSets["Colors"${useOpt['c']}]}"))
+  # Translate the chosen color-set by eval into escape codes defined at top of this file
+  IFS=" " read -r -a colors <<< "$(eval "echo ${colorSets["Colors"${useOpt['c']}]}")"
 
   if [[ $hint == "yes" ]]; then
     print "Generate file: $outFile"
     print "Use tizu file: $inFile"
     info="Use options: "
-    for op in ${!useOpt[@]}; do
+    for op in "${!useOpt[@]}"; do
       info="$info$op${useOpt[$op]}  "
     done
     print "$info"
 
     if [[ ${#optCounter[@]} -gt 0 ]]; then
-      for op in ${!useOpt[@]}; do
+      for op in "${!useOpt[@]}"; do
         info="$info$op${useOpt[$op]}  "
         print "Option $op: ${optCounter[$op]} ${optName[$op]}"
       done
@@ -448,7 +456,7 @@ cmdMake() {
   fi
 
   # Build variable sed scripts
-  for op in ${!useOpt[@]}; do
+  for op in "${!useOpt[@]}"; do
     [[ $op == 'c' ]] && continue # Ignore color option here
     keepOptions="s/:tu# $op${useOpt[$op]} *://g ; $keepOptions"
   done
@@ -468,9 +476,9 @@ cmdMake() {
       -e "s/:tuNC *:/$Normal/g              # No Color"                       \
       -e 's/\\/\\\\/g                       # Double all backslashes...'      \
    -r -e 's/\\\\([46bdslmnoOrtuUv])/\\\1/g  # ...but keep issue escapes'      \
-      $inFile > $outFile
+      "$inFile" > "$outFile"
 
-  [[ "$show" == "yes" ]] && cmdShow $outFile
+  [[ "$show" == "yes" ]] && cmdShow "$outFile"
 }
 
 cmdRestore() {
@@ -488,7 +496,7 @@ cmdShow() {
 
   if [[ $file == *.tizu ]]; then
     [[ $hint == "yes" ]] && info "It's a .tizu file? I run 'make' for you..."
-    cmdMake $@ --tofile "$tmpPath/$tmpFile"
+    cmdMake "$@" --tofile "$tmpPath/$tmpFile"
     return
   fi
 
@@ -504,7 +512,10 @@ cmdShow() {
     escTTY="tty1"                     # \l FIXME: ...to show a real name
     escArch=$(uname -m)               # \m
     escHostName=$(uname -n)           # \n
-    escNISDomain=$(hostname -d)       # \o
+    if which hostname 2>/dev/null     # \o 'hostname -d' is not always available
+      then escNISDomain=$(hostname -d)
+      else escNISDomain="(none)"
+    fi
     # TODO \O
     escReleaeOS=$(uname -r)           # \r
     escTime=$(date +%T)               # \t
@@ -513,6 +524,7 @@ cmdShow() {
     # TODO \v
   fi
 
+  # shellcheck disable=SC2154 # foo is referenced but not assigned - Yeah, it's in a comment as place holder
   sed -e 's/\\\\/\\/g'             \
       -e "s/$clearScreen//g"       \
       -e "s/\\\\4/$escIp4/g"       \
@@ -530,7 +542,7 @@ cmdShow() {
       -e "s/\\\\u/$escUser/g"      \
       -e "s/\\\\U/$escUserS/g"     \
       -e "# TODO s/\\\\b/$foo/g"   \
-      $file
+      "$file"
 }
 
 #
@@ -538,14 +550,14 @@ cmdShow() {
 #
 cmd=$1 && shift
 case $cmd in
-  doc|d)      cmdDoc $@                                               ; ;;
+  doc|d)      cmdDoc "$@"                                             ; ;;
   -h|\?|-\?)  cmdHelp                                                 ; ;;
   help|h)     cmdHelp "fullHelp"                                      ; ;;
-  install|i)  cmdInstall $@                                           ; ;;
-  list|l)     cmdList $@                                              ; ;;
-  make|m)     cmdMake $@                                              ; ;;
+  install|i)  cmdInstall "$@"                                         ; ;;
+  list|l)     cmdList "$@"                                            ; ;;
+  make|m)     cmdMake "$@"                                            ; ;;
   restore|r)  cmdRestore                                              ; ;;
-  show|s)     cmdShow $@                                              ; ;;
+  show|s)     cmdShow "$@"                                            ; ;;
   '')         info "Hello! Try -h or h to get some help"              ; ;;
   *)          exitError "Unknown command '$cmd', try -h or h" '--'    ; ;;
 esac
