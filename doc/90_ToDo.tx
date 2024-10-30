@@ -10,6 +10,10 @@ that things are done in this order not even that they ever be done.
 You are kindly invited to take one of these points to start your contribution.
 But you could of cause chose any other, not here listed, issue if you like.
 
+H: The use of sudo is currently hard coded, but not every one use/has sudo
+H: While the Makefile support DESTDIR as usual, is an other install path than
+   the default one not possible. That's also bad while hacking on tulizu. Would
+   be nice we could use tulizu without the need to install, just after download
 H: parseTizuFile() Add checks not to overwrite known data, exitError if so
 M: parseTizuFile() Add checks to avoid gaps in (option/color) numbering, fix
    them automaticly?

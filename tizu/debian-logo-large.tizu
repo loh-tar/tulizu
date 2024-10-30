@@ -1,8 +1,8 @@
-:tu# Author=vidy007
-:tu# Desc=Logo with lettering
-:tu#
-:tu# Colors=$Bold$White $Bold$Red
-:tu#
+:tu# Author=vidy007 
+:tu# Desc=Big 17 logo with big lettering and 3 colorschemes
+:tu# Colors1=$Bold$White $Bold$Red
+:tu# Colors2=$Bold$White $Bold$Magenta
+:tu# Colors3=$Bold$White $White
 :tuClearScreen:
 :tuC1:       _,met$$$$$gg.             :tuC1:             dddddddd                   bbbbbbbb                                                       
 :tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC1:             d::::::d                   b::::::b              :tuC2:iiii:tuC1:                                     
