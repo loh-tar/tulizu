@@ -1,0 +1,29 @@
+:tu# Author=vidy007 
+:tu# Desc=Big 17 logo with large lowercase lettering and 8 colorsets
+:tu# Colors1=$Bold$Red $Bold$Red $Bold$White
+:tu# Colors2=$Bold$White $Bold$Red $Bold$White
+:tu# Colors3=$Bold$White $Bold$Red $Bold$Red
+:tu# Colors4=$Bold$Magenta $Bold$Magenta $Bold$White
+:tu# Colors5=$Bold$White $Bold$Magenta $Bold$White
+:tu# Colors6=$Bold$White $Bold$Magenta $Bold$Magenta
+:tu# Colors7=$Bold$Black $Bold$White $Bold$White
+:tu# Colors8=$Bold$White $Bold$Black $Bold$White
+:tuClearScreen:
+:tuC1:       _,met$$$$$gg.             :tuC3:             dddddddd                   bbbbbbbb                                                       
+:tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuC3:             d::::::d                   b::::::b              :tuC2:iiii:tuC3:                                     
+:tuC1:  ,g$$P"         """Y$$.".       :tuC3:             d::::::d                   b::::::b             :tuC2:i::::i:tuC3:                                    
+:tuC1: ,$$P'               `$$$.       :tuC3:             d::::::d                   b::::::b              :tuC2:iiii:tuC3:                                     
+:tuC1:',$$P       ,ggs.     `$$b:      :tuC3:             d:::::d                     b:::::b                                                       
+:tuC1:`d$$'     ,$P"'   :tuC2:.:tuC1:    $$$       :tuC3:     ddddddddd:::::d     eeeeeeeeeeee    b:::::bbbbbbbbb    iiiiiii   aaaaaaaaaaaaa  nnnn  nnnnnnnn    
+:tuC1: $$P      d$'     :tuC2:,:tuC1:    $$$P      :tuC3:   dd::::::::::::::d   ee::::::::::::ee  b::::::::::::::bb  i:::::i   a::::::::::::a n:::nn::::::::nn  
+:tuC1: $$:      $.   :tuC2:-:tuC1:    ,d$$'        :tuC3:  d::::::::::::::::d  e::::::eeeee:::::eeb::::::::::::::::b  i::::i   aaaaaaaaa:::::an::::::::::::::nn 
+:tuC1: $$;      Y$b._   _,d$P'         :tuC3: d:::::::ddddd:::::d e::::::e     e:::::eb:::::bbbbb:::::::b i::::i            a::::ann:::::::::::::::n
+:tuC1: Y$$.    :tuC2:`.:tuC1:`"Y$$$$P"'            :tuC3: d::::::d    d:::::d e:::::::eeeee::::::eb:::::b    b::::::b i::::i     aaaaaaa:::::a  n:::::nnnn:::::n
+:tuC1: `$$b      :tuC2:"-.__:tuC1:                 :tuC3: d:::::d     d:::::d e:::::::::::::::::e b:::::b     b:::::b i::::i   aa::::::::::::a  n::::n    n::::n
+:tuC1:  `Y$$                           :tuC3: d:::::d     d:::::d e::::::eeeeeeeeeee  b:::::b     b:::::b i::::i  a::::aaaa::::::a  n::::n    n::::n
+:tuC1:   `Y$$.                         :tuC3: d:::::d     d:::::d e:::::::e           b:::::b     b:::::b i::::i a::::a    a:::::a  n::::n    n::::n
+:tuC1:     `$$b.                       :tuC3: d::::::ddddd::::::dde::::::::e          b:::::bbbbbb::::::bi::::::ia::::a    a:::::a  n::::n    n::::n
+:tuC1:       `Y$$b.                    :tuC3:  d:::::::::::::::::d e::::::::eeeeeeee  b::::::::::::::::b i::::::ia:::::aaaa::::::a  n::::n    n::::n
+:tuC1:          `"Y$b._                :tuC3:   d:::::::::ddd::::d  ee:::::::::::::e  b:::::::::::::::b  i::::::i a::::::::::aa:::a n::::n    n::::n
+:tuC1:             `"""                :tuC3:    ddddddddd   ddddd    eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   iiiiiiii  aaaaaaaaaa  aaaa nnnnnn    nnnnnn
+:tuNC:

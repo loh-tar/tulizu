@@ -1,0 +1,29 @@
+:tu# Author=vidy007 
+:tu# Desc=Big 17 logo with 8 colorsets
+:tu# Colors1=$Bold$Red $Bold$White
+:tu# Colors2=$Bold$White $Bold$Red
+:tu# Colors3=$Bold$Red $Bold$Red
+:tu# Colors4=$Bold$Magenta $Bold$White
+:tu# Colors5=$Bold$White $Bold$Magenta
+:tu# Colors6=$Bold$Magenta $Bold$Magenta
+:tu# Colors7=$Bold$Black $Bold$White
+:tu# Colors8=$Bold$White $Bold$Black
+:tuClearScreen:
+:tuC1:       _,met$$$$$gg.             
+:tuC1:    ,g$$$$$$$$$$$$$$$P.          
+:tuC1:  ,g$$P"         """Y$$.".       
+:tuC1: ,$$P'               `$$$.       
+:tuC1:',$$P       ,ggs.     `$$b:      
+:tuC1:`d$$'     ,$P"'   :tuC2:.:tuC1:    $$$ 
+:tuC1: $$P      d$'     :tuC2:,:tuC1:    $$$P
+:tuC1: $$:      $.   :tuC2:-:tuC1:    ,d$$'  
+:tuC1: $$;      Y$b._   _,d$P'         
+:tuC1: Y$$.    :tuC2:`.:tuC1:`"Y$$$$P"'
+:tuC1: `$$b      :tuC2:"-.__:tuC1:     
+:tuC1:  `Y$$                           
+:tuC1:   `Y$$.                         
+:tuC1:     `$$b.                       
+:tuC1:       `Y$$b.                    
+:tuC1:          `"Y$b._                
+:tuC1:             `"""                
+:tuNC:
