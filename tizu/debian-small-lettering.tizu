@@ -1,0 +1,19 @@
+:tu# Author=vidy007
+:tu# Desc=Small lettering with 6 color sets
+:tu# Colors1=$Bold$White $Bold$Red
+:tu# Colors2=$Bold$Red $Bold$Red
+:tu# Colors3=$Bold$White $Bold$Magenta
+:tu# Colors4=$Bold$Magenta $Bold$Magenta
+:tu# Colors5=$Bold$White $Bold$Black
+:tu# Colors6=$Bold$Black $Bold$Black
+:tu# Opt:l=Lettering style
+:tu# l1=( and ) in letters curves
+:tu# l2=| in letters curves
+:tuClearScreen:
+:tuC1        :     _      _     :tuC2:_             
+:tuC1        :  __| | ___| |__ :tuC2:(:tuC1:_:tuC2:):tuC1: __ _ _ __
+:tuC1        : / _` |/ _ | '_ \| |/ _` | '_ \ 
+:tuC1::tu# l1:| (_| |  __| |_) | | (_| | | | |
+:tuC1::tu# l2:| |_| |  __| |_| | | |_| | | | |
+:tuC1        : \__,_|\___|_.__/|_|\__,_|_| |_|
+:tuNC        :

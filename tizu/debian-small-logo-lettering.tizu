@@ -1,0 +1,34 @@
+:tu# Author=vidy007
+:tu# Desc=Small logo with 6 color sets
+:tu# Colors1=$Bold$Red $Bold$Red $Bold$White
+:tu# Colors2=$Bold$White $Bold$Red $Bold$White
+:tu# Colors3=$Bold$Magenta $Bold$Magenta $Bold$White
+:tu# Colors4=$Bold$White $Bold$Magenta $Bold$White
+:tu# Colors5=$Bold$Black $Bold$Black $Bold$White
+:tu# Colors6=$Bold$White $Bold$Black $Bold$White
+:tu# Opt:s=Swirl style
+:tu# s1=Line style (like in pfetch and afetch)
+:tu# s2=Alphabetic style (like in neofetch and fastfetch)
+:tu# Opt:l=Lettering style
+:tu# l1=( and ) in letters curves
+:tu# l2=| in letters curves
+:tuClearScreen: 
+:tuC1::tu# s1:  _-----_     :tuC3:     _      _     :tuC2:_             
+:tuC1::tu# s1: /   _   \    :tuC3:  __| | ___| |__ :tuC2:(:tuC3:_:tuC2:):tuC3: __ _ _ __  
+:tuC1::tu# s1:|   |    |    :tuC3: / _` |/ _ | '_ \| |/ _` | '_ \ 
+:tuC1::tu# s1:|   \___/     :tuC3::tu# l1:| (_| |  __| |_) | | (_| | | | |
+:tuC1::tu# s1:|   \___/     :tuC3::tu# l2:| |_| |  __| |_| | | |_| | | | |             
+:tuC1::tu# s1: \_           :tuC3: \__,_|\___|_.__/|_|\__,_|_| |_|
+:tuC1::tu# s1:   --__              
+:tuC1::tu# s2:      ______
+:tuC1::tu# s2:   ,%f""''"":$. 
+:tuC1::tu# s2:  of;    __  "l. 
+:tuC1::tu# s2: !$   ,f'  ":tuC2:;:tuC1: ;$  :tuC3:     _      _     :tuC2:_             
+:tuC1::tu# s2: $l   b   :tuC2:_:tuC1:   %b  :tuC3:  __| | ___| |__ :tuC2:(:tuC3:_:tuC2:):tuC3: __ _ _ __  
+:tuC1::tu# s2: $l   '%_  _;o"   :tuC3: / _` |/ _ | '_ \| |/ _` | '_ \ 
+:tuC1::tu# s2: :$, :tuC2:'._:tuC1:`""'      :tuC3::tu# l1:| (_| |  __| |_) | | (_| | | | |
+:tuC1::tu# s2: :$, :tuC2:'._:tuC1:`""'      :tuC3::tu# l2:| |_| |  __| |_| | | |_| | | | |
+:tuC1::tu# s2:  :$o             :tuC3: \__,_|\___|_.__/|_|\__,_|_| |_|               
+:tuC1::tu# s2:    "%_                                     
+:tuC1::tu# s2:      `":._    
+:tuNC:
