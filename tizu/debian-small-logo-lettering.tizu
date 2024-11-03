@@ -1,0 +1,27 @@
+:tu# Author=vidy007
+:tu# Desc=Simple logo like in pfetch or afetch and lettering
+:tu#
+:tu# Razor1=Remove the logo
+:tu# Razor2=Remove the lettering
+:tu#
+:tu# Colors1=$Bold$Red $Bold$Red $Bold$White
+:tu# Colors2=$Bold$White $Bold$Red $Bold$White
+:tu# Colors3=$Bold$Magenta $Bold$Magenta $Bold$White
+:tu# Colors4=$Bold$White $Bold$Magenta $Bold$White
+:tu# Colors5=$Bold$Black $Bold$Black $Bold$White
+:tu# Colors6=$Bold$White $Bold$Black $Bold$White
+:tu#
+:tu# Opt:l=Lettering styles
+:tu# l1=Use ( and ) in letter curves
+:tu# l2=Use | in letter curves
+:tu#
+:tuClearScreen:
+:tu#
+:tuR1::tuC1:  _-----_   :tuR1::tuR2::tuC3        :     _      _     :tuC2:_                                 :tuR2:
+:tuR1::tuC1: /   _   \  :tuR1::tuR2::tuC3        :  __| | ___| |__ :tuC2:(:tuC3:_:tuC2:):tuC3: __ _ _ __    :tuR2:
+:tuR1::tuC1:|   |    |  :tuR1::tuR2::tuC3        : / _` |/ _ | '_ \| |/ _` | '_ \                           :tuR2:
+:tuR1::tuC1:|   \___/   :tuR1::tuR2::tuC3::tu# l1:| (_| |  __| |_) | | (_| | | | |                          :tuR2:
+:tuR1::tuC1:|   \___/   :tuR1::tuR2::tuC3::tu# l2:| |_| |  __| |_| | | |_| | | | |                          :tuR2:
+:tuR1::tuC1: \_         :tuR1::tuR2::tuC3        : \__,_|\___|_.__/|_|\__,_|_| |_|                          :tuR2:
+:tuR1::tuC1:   --__     :tuR1::tuR2:                                                                        :tuR2:
+:tuNC:

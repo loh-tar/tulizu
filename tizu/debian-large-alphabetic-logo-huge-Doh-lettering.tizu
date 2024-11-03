@@ -1,0 +1,35 @@
+:tu# Author=vidy007
+:tu# Desc=Big 17 line logo and lowercase lettering in Doh font
+:tu#
+:tu# Razor1=Remove the logo
+:tu# Razor2=Remove the lettering
+:tu#
+:tu# Colors1=$Bold$Red $Bold$Red $Bold$White
+:tu# Colors2=$Bold$White $Bold$Red $Bold$White
+:tu# Colors3=$Bold$White $Bold$Red $Bold$Red
+:tu# Colors4=$Bold$Magenta $Bold$Magenta $Bold$White
+:tu# Colors5=$Bold$White $Bold$Magenta $Bold$White
+:tu# Colors6=$Bold$White $Bold$Magenta $Bold$Magenta
+:tu# Colors7=$Bold$Black $Bold$White $Bold$White
+:tu# Colors8=$Bold$White $Bold$Black $Bold$White
+:tu#
+:tuClearScreen:
+:tu#
+:tuR1::tuC1:       _,met$$$$$gg.             :tuDY            ::tuR1::tuR2::tuC3:             dddddddd                   bbbbbbbb                                                       :tuR2:
+:tuR1::tuC1:    ,g$$$$$$$$$$$$$$$P.          :tuDY            ::tuR1::tuR2::tuC3:             d::::::d                   b::::::b              :tuC2:iiii:tuC3:                         :tuR2:
+:tuR1::tuC1:  ,g$$P"         """Y$$.".       :tuDY            ::tuR1::tuR2::tuC3:             d::::::d                   b::::::b             :tuC2:i::::i:tuC3:                        :tuR2:
+:tuR1::tuC1: ,$$P'               `$$$.       :tuDY            ::tuR1::tuR2::tuC3:             d::::::d                   b::::::b              :tuC2:iiii:tuC3:                         :tuR2:
+:tuR1::tuC1:',$$P       ,ggs.     `$$b:      :tuDY            ::tuR1::tuR2::tuC3:             d:::::d                     b:::::b                                                       :tuR2:
+:tuR1::tuC1:`d$$'     ,$P"'   :tuC2:.:tuC1:    $$$ :tuDY:      :tuR1::tuR2::tuC3:     ddddddddd:::::d     eeeeeeeeeeee    b:::::bbbbbbbbb    iiiiiii   aaaaaaaaaaaaa  nnnn  nnnnnnnn    :tuR2:
+:tuR1::tuC1: $$P      d$'     :tuC2:,:tuC1:    $$$P:tuDY:      :tuR1::tuR2::tuC3:   dd::::::::::::::d   ee::::::::::::ee  b::::::::::::::bb  i:::::i   a::::::::::::a n:::nn::::::::nn  :tuR2:
+:tuR1::tuC1: $$:      $.   :tuC2:-:tuC1:    ,d$$'  :tuDY:      :tuR1::tuR2::tuC3:  d::::::::::::::::d  e::::::eeeee:::::eeb::::::::::::::::b  i::::i   aaaaaaaaa:::::an::::::::::::::nn :tuR2:
+:tuR1::tuC1: $$;      Y$b._   _,d$P'         :tuDY            ::tuR1::tuR2::tuC3: d:::::::ddddd:::::d e::::::e     e:::::eb:::::bbbbb:::::::b i::::i            a::::ann:::::::::::::::n:tuR2:
+:tuR1::tuC1: Y$$.    :tuC2:`.:tuC1:`"Y$$$$P"':tuDY:            :tuR1::tuR2::tuC3: d::::::d    d:::::d e:::::::eeeee::::::eb:::::b    b::::::b i::::i     aaaaaaa:::::a  n:::::nnnn:::::n:tuR2:
+:tuR1::tuC1: `$$b      :tuC2:"-.__:tuC1:     :tuDY:            :tuR1::tuR2::tuC3: d:::::d     d:::::d e:::::::::::::::::e b:::::b     b:::::b i::::i   aa::::::::::::a  n::::n    n::::n:tuR2:
+:tuR1::tuC1:  `Y$$                           :tuDY            ::tuR1::tuR2::tuC3: d:::::d     d:::::d e::::::eeeeeeeeeee  b:::::b     b:::::b i::::i  a::::aaaa::::::a  n::::n    n::::n:tuR2:
+:tuR1::tuC1:   `Y$$.                         :tuDY            ::tuR1::tuR2::tuC3: d:::::d     d:::::d e:::::::e           b:::::b     b:::::b i::::i a::::a    a:::::a  n::::n    n::::n:tuR2:
+:tuR1::tuC1:     `$$b.                       :tuDY            ::tuR1::tuR2::tuC3: d::::::ddddd::::::dde::::::::e          b:::::bbbbbb::::::bi::::::ia::::a    a:::::a  n::::n    n::::n:tuR2:
+:tuR1::tuC1:       `Y$$b.                    :tuDY            ::tuR1::tuR2::tuC3:  d:::::::::::::::::d e::::::::eeeeeeee  b::::::::::::::::b i::::::ia:::::aaaa::::::a  n::::n    n::::n:tuR2:
+:tuR1::tuC1:          `"Y$b._                :tuDY            ::tuR1::tuR2::tuC3:   d:::::::::ddd::::d  ee:::::::::::::e  b:::::::::::::::b  i::::::i a::::::::::aa:::a n::::n    n::::n:tuR2:
+:tuR1::tuC1:             `"""                :tuDY            ::tuR1::tuR2::tuC3:    ddddddddd   ddddd    eeeeeeeeeeeeee  bbbbbbbbbbbbbbbb   iiiiiiii  aaaaaaaaaa  aaaa nnnnnn    nnnnnn:tuR2:
+:tuNC:
