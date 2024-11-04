@@ -122,6 +122,7 @@ parseTizuFile() {
       Author)     attributes[$tag]=$rhs                               ; ;;
       Colors?)    colorSets[$tag]=$rhs                                ; ;;
       Colors)     colorSets["${tag}1"]=$rhs                           ; ;;
+      Razor?)     optDesc["z${tag:5}"]=$rhs; (( optCounter["z"]++ ))  ; ;;
       Desc)       attributes[$tag]=$rhs                               ; ;;
       Opt:[a-z])  optName[${tag:4}]=$rhs                              ; ;;
       [a-z][1-9]) optDesc[${tag}]=$rhs; (( optCounter[${tag%?}]++ ))  ; ;;
@@ -136,6 +137,12 @@ parseTizuFile() {
     optName['c']="Color sets"
   elif [[ -z ${optName['c']} && ${optCounter['c']} -gt 0 ]]; then
     optName['c']="Color set"
+  fi
+
+  if [[ -z ${optName['z']} && ${optCounter['z']} -gt 1 ]]; then
+    optName['z']="Razor cuts"
+  elif [[ -z ${optName['z']} && ${optCounter['z']} -gt 0 ]]; then
+    optName['z']="Razor cut"
   fi
 }
 
@@ -382,6 +389,7 @@ cmdMake() {
   local    hint="yes"
   local    show="yes"
   local -A givenOpt
+  local -a givenRazors
 
   checkFile "$inFile" "Source"
 
@@ -402,6 +410,7 @@ cmdMake() {
           shift
           while [[ $# -gt 0 ]]; do
             givenOpt["${1:0:1}"]="${1:1}"
+            [[ "${1:0:1}" == "z" ]] && givenRazors+=("$1")
             [[ "$2" =~ ^-- ]] && break;
             shift
           done
@@ -425,6 +434,7 @@ cmdMake() {
 
   # Set needed but not given options to a default of 1
   for op in "${!optCounter[@]}"; do
+    [[ $op == "z"  ]] && continue  # Ignore Razor!
     [[ -z ${useOpt[$op]}  ]] && useOpt[$op]="1"
   done
 
@@ -458,8 +468,13 @@ cmdMake() {
   # Build variable sed scripts
   for op in "${!useOpt[@]}"; do
     [[ $op == 'c' ]] && continue # Ignore color option here
+    [[ $op == 'z' ]] && continue # Ignore razor option here
     keepOptions="s/:tu# $op${useOpt[$op]} *://g ; $keepOptions"
   done
+  for op in "${givenRazors[@]}"; do
+    razorActions="s/:tuR${op:1} *:.*:tuR${op:1} *://g ; $razorActions"
+  done
+
   for (( i=0; i < ${#colors[@]}; i++ )); do
     j=$(( i+1 ))
     setColors="s/:tuC$j *:/$Normal${colors[i]}/g ; $setColors"
@@ -471,6 +486,8 @@ cmdMake() {
   sed -e "$keepOptions                         # Do it first, and then..."       \
       -e "/:tu#/d                              # ...remove remaining comments"   \
       -e "$setColors                           # Now we have less colors to set" \
+      -e "$razorActions                        # Cut between Razor-Tags"         \
+      -e "s/:tuR[1-9] *://g                    # Remove not activated Razor Tags"\
       -e "s/:tuClearScreen:/$clearScreen/g"                                      \
       -e "s/:tuDY *://g                        # Dummy, do nothing"              \
       -e "s/:tuNC *:/$Normal/g                 # No Color"                       \
