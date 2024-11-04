@@ -180,6 +180,13 @@ unique name has yet been found.
 :tu# Opt:<c>=<name>
   The Option-Name-Tag introduce an option with a hint for the user
 
+:tu# Razor<n>=<hint>
+  The Razor-Declaration-Tag introduce the Razor-Tag
+
+:tuR<n>:
+  The Razor-Tag must always be used as a pair. When option z<n> is specified,
+  everything between the tag-pair is removed
+
 :tu# Colors<n>=<color1> [<color2> <colorN> ...]
 :tu# Colors=<color1> [<color2> <colorN> ...]
   As you see there are two kind of Color-Array-Tags available, with and without
@@ -218,12 +225,12 @@ Text attributes
 
 4-4- Notes To Tags
 --------------------
-- The color or attributes tags :tuCn:, :tuNC: and :tuDY: could be expanded with
-  spaces before the end colon, e.g. :tuC1      :
+- Tags can be expanded with spaces before the end colon, e.g. :tuC1      :
   The idea is to adjust following content with lines above or below for better
   human readability. That's the reason of the Dummy-Tag.
 
-- Do not use char c as an own created option. It is used by the Color-Array-Tag.
+- Do not use the characters c or z as an own created option. They are used by
+  the Color-Array-Tag resp Razor-Tag.
 
 - An Option-Name-Tag for colors is auto generated when not present.
 
