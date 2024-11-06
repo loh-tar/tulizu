@@ -468,14 +468,14 @@ cmdMake() {
   keepOptions=${keepOptions%;*}
   setColors=${setColors%;*}
 
-  sed -e "$keepOptions                      # Do it first, and then..."       \
-      -e "/:tu#/d                           # ...remove remaining comments"   \
-      -e "$setColors                        # Now we have less colors to set" \
-      -e "s/:tuClearScreen:/$clearScreen/g"                                   \
-      -e "s/:tuDY *://g                     # Dummy, do nothing"              \
-      -e "s/:tuNC *:/$Normal/g              # No Color"                       \
-      -e 's/\\/\\\\/g                       # Double all backslashes...'      \
-   -r -e 's/\\\\([46bdsSlmnoOrtuUv])/\\\1/g # ...but keep issue escapes'      \
+  sed -e "$keepOptions                         # Do it first, and then..."       \
+      -e "/:tu#/d                              # ...remove remaining comments"   \
+      -e "$setColors                           # Now we have less colors to set" \
+      -e "s/:tuClearScreen:/$clearScreen/g"                                      \
+      -e "s/:tuDY *://g                        # Dummy, do nothing"              \
+      -e "s/:tuNC *:/$Normal/g                 # No Color"                       \
+      -e 's/\\/\\\\/g                          # Double all backslashes...'      \
+   -r -e 's/\\\\([46bdesSlmnoOrtuUv])/\\\1/g   # ...but keep issue escapes'      \
       "$inFile" > "$outFile"
 
   [[ "$show" == "yes" ]] && cmdShow "$outFile"
