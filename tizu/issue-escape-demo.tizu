@@ -1,0 +1,32 @@
+:tu# Author=loh.tar
+:tu# Desc=Shows all issue escapes in action as listed in agetty man page
+:tu# The design and color scheme does not claim to be particularly beautiful or functional :-)
+:tu#
+:tu# c1=Archie
+:tu# Colors1=$Cyan $Bold$Cyan $White $Bold$White $Bold$Black
+:tu# c2=Paulchen
+:tu# Colors2=$Red $Bold$Red $Bold$White $Normal $Bold$Black
+:tu# c3=Vader
+:tu# Colors3=$Bold$Black $Normal $White $Bold$White $Normal
+:tu#
+:tu#ClearScreen:
+:tu#
+:tu# We use here strange looking color settings to protect escape \x to be translated
+:tu#                  \ vvvvvvvvvvvv /
+:tuC1:IP4 Address     :tuC5:\:tuC5:4:tuC1:: :tuC3:\4:tuNC:
+:tuC1:IP6 Address     :tuC5:\:tuC5:6:tuC1:: :tuC3:\6:tuNC:
+:tuC2:Baudrate        :tuC5:\:tuC5:b:tuC2:: :tuC4:\b:tuNC:
+:tuC2:Date            :tuC5:\:tuC5:d:tuC2:: :tuC4:\d:tuNC:
+:tuC1:OS              :tuC5:\:tuC5:s:tuC1:: :tuC3:\s:tuNC:
+:tuC1:Pretty Name     :tuC5:\:tuC5:S:tuC1:: :tuC3:\S:tuNC:
+:tuC2:Line            :tuC5:\:tuC5:l:tuC2:: :tuC4:\l:tuNC:
+:tuC2:Machine         :tuC5:\:tuC5:m:tuC2:: :tuC4:\m:tuNC:
+:tuC2:Hostname        :tuC5:\:tuC5:n:tuC2:: :tuC4:\n:tuNC:
+:tuC1:NIS Domain Name :tuC5:\:tuC5:o:tuC1:: :tuC3:\o:tuNC:
+:tuC1:DNS Domain Name :tuC5:\:tuC5:O:tuC1:: :tuC3:\O:tuNC:
+:tuC2:OS Release      :tuC5:\:tuC5:r:tuC2:: :tuC4:\r:tuNC:
+:tuC1:Current Time    :tuC5:\:tuC5:t:tuC1:: :tuC3:\t:tuNC:
+:tuC1:User(s) No      :tuC5:\:tuC5:u:tuC1:: :tuC3:\u:tuNC:
+:tuC1:User(s)         :tuC5:\:tuC5:U:tuC1:: :tuC3:\U:tuNC:
+:tuC2:OS Version      :tuC5:\:tuC5:v:tuC2:: :tuC4:\v:tuNC:
+:tuNC:

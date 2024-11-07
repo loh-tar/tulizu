@@ -220,8 +220,13 @@ See man page of agetty, or the getty you use, below 'ISSUE ESCAPES'.
 NOTE: Not all escapes are supported by 'show' command, or only with fake data,
       when you are not using agetty v2.35 or later. See source code for details.
 
+For your convenience, an issue demo file is available, which shows all agetty
+escape codes in action.
 
-5-2- Things Of Interest
+  $ tulizu list esc.demo show
+
+
+5-3- Things Of Interest
 -------------------------
 FIGlet fonts
   www.figlet.org
