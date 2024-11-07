@@ -520,7 +520,7 @@ cmdShow() {
     escTTY="tty1"                     # \l FIXME: ...to show a real name
     escArch=$(uname -m)               # \m
     escHostName=$(uname -n)           # \n
-    if which hostname 2>/dev/null     # \o 'hostname -d' is not always available
+    if command -v hostname >/dev/null 2>&1  # \o 'hostname -d' is not always available
       then escNISDomain=$(hostname -d)
       else escNISDomain="(none)"
     fi
