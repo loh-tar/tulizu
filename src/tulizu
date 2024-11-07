@@ -500,6 +500,14 @@ cmdShow() {
     return
   fi
 
+  if [[ $gettyCanShow == "yes" ]]; then
+    # We have to take care of the possible clear screen sequence
+    sed -e "s/$clearScreen//g" "$file" > "$tmpPath/$tmpFile-extra"
+    agetty --show-issue --issue-file "$tmpPath/$tmpFile-extra"
+    rm "$tmpPath/$tmpFile-extra"
+    return
+  fi
+
   # Do not init variables twice
   if [[ -z $escDate ]]; then
     # See manpage of agetty below 'ISSUE ESCAPES'
@@ -548,6 +556,14 @@ cmdShow() {
 #
 # Main
 #
+
+# Newer versions of agetty can show itself an issue file, so we do not
+# need to fake some output
+if command -v agetty >/dev/null 2>&1 &&  agetty --help|grep -q -- "--show-issue"
+  then gettyCanShow="yes"
+  else gettyCanShow="no"
+fi
+
 cmd=$1 && shift
 case $cmd in
   doc|d)      cmdDoc "$@"                                             ; ;;
