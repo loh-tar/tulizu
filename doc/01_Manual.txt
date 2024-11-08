@@ -280,6 +280,9 @@ escape codes in action.
 FIGlet fonts
   www.figlet.org
 
+Caca Labs, fonts and more
+  http://caca.zoy.org/
+
 aewan editor
   aewan.sourceforge.net
 
