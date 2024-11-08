@@ -114,9 +114,22 @@ Only for completeness: 'tizu' is short for 'tulizu izu' :-)
 
 4-1- tizu File Tags
 ---------------------
+:tu# Author=<name>
+  You've probably guessed it. Place here what ever you like, your full name,
+  only a nick, e-mail or combinations of these. If your work is based on some
+  one else, add a hint too
+
+:tu# Desc=<description>
+  The Description-Tag should describe in ~80 chars the big picture with as much
+  detail as possible, but without mentioning anything unimportant or redundant
+
 :tu#
   The Comment-Tag. The line will entirely removed. There is no end colon needed.
-  Many of the other tags looks in front as this Comment-Tag, do not be confused
+  Many of the other tags looks in front as this Comment-Tag, do not be confused!
+  Use it also to add more credits, like where you found the art, or what tools
+  you have used to create this file, e.g. what FIGlet font do we see or what
+  ASCII editor/converter was used. Maybe this way someone will be inspired to
+  create something new
 
 :tu# <c><n>:
   The Option-Tag is removed in place by make command when the option <c><n> was
@@ -127,9 +140,6 @@ Only for completeness: 'tizu' is short for 'tulizu izu' :-)
 
 :tu# Opt:<c>=<name>
   The Option-Name-Tag introduce an option with a hint for the user
-
-:tu# Author=<name>
-  You've probably guessed it
 
 :tu# Colors<n>=<color1> [<color2> <colorN> ...]
 :tu# Colors=<color1> [<color2> <colorN> ...]
