@@ -112,7 +112,46 @@ consist of a colon : followed by the letters tu and usually ends with a colon.
 Only for completeness: 'tizu' is short for 'tulizu izu' :-)
 
 
-4-1- tizu File Tags
+4-1- tizu File Name
+---------------------
+From a technical point of view, of course, it doesn't matter what the file is
+called, but since the list command search and filter for the file name, it is
+useful to have all files follow a certain pattern.
+
+  <system/distribution>-<size>-logo-<type>-<size>-lettering-<type>.tizu
+
+A <size> is relative, of course, but let's put it this way:
+
+  Logo height       Wording
+     1-6              small
+    7-10              No extra size, just logo
+    11-15             medium
+    16-20             large
+    21-               huge
+
+  Lettering height  Wording
+     1-3              small
+     4-6              No extra size, just lettering
+     7-8              medium
+     9-13             large
+    14-               huge
+
+However, even more important than this rather rough naming scheme is that each
+individual file can be selected unambiguously. For this reason, type is there
+above. Type can be anything that makes sense, resulting in e.g.:
+
+  logo-simple, logo-dots, johns-logo, pauls-logo, beastie-logo
+
+With the lettering, it is particularly useful to specify the used font or if you
+have something modified describe the change, e.g.:
+
+  Doh-lettering, lettering-condensed, lettering-wide
+
+And finally, you can add any kind of additional attribute or author name if no
+unique name has yet been found.
+
+
+4-2- tizu File Tags
 ---------------------
 :tu# Author=<name>
   You've probably guessed it. Place here what ever you like, your full name,
@@ -163,7 +202,7 @@ Only for completeness: 'tizu' is short for 'tulizu izu' :-)
   line before any effective content
 
 
-4-2- Available Colors And Attributes
+4-3- Available Colors And Attributes
 --------------------------------------
 All names must be prefixed by a dollar sign at the Color-Array-Tag, e.g. $Green.
 
@@ -177,7 +216,7 @@ Text attributes
   Normal, Bold, UScore, Blink, RVideo
 
 
-4-3- Notes To Tags
+4-4- Notes To Tags
 --------------------
 - The color or attributes tags :tuCn:, :tuNC: and :tuDY: could be expanded with
   spaces before the end colon, e.g. :tuC1      :
