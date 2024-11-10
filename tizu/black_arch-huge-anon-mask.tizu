@@ -13,9 +13,9 @@
 :tu# m2=Stallman greeting
 :tu#
 :tuC1:  Black Arch \s \m
-
+:tuNC:
 :tuC1:  \d  --  \t
-:tuC1:
+:tuNC:
 :tuC2:      mmdmhhyhhyyhhdhhdhmdmNNN
 :tuC2:   NNddhhhyyhhysyyhyhhhyhhdhdmmN
 :tuC2:   NmddhyhhhhsyhoshhhyhdhhhdmdmNN
@@ -38,8 +38,8 @@
 :tuC2:           NNNmmN   mNNNN
 :tuC2:            NNNNN   NNNN
 :tuC2:               NN   N
-
+:tuNC:
 :tuC1::tu# m1:  Welcome home, stranger!
 :tuC1::tu# m2:  Happy hacking!
-
+:tuC1:
 :tu#: The tuNC sequence is omitted since a colored login prompt is wanted
