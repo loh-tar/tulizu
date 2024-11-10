@@ -493,6 +493,8 @@ cmdMake() {
       -e "s/:tuNC *:/$Normal/g                 # No Color"                       \
       -e 's/\\/\\\\/g                          # Double all backslashes...'      \
    -r -e 's/\\\\([46bdesSlmnoOrtuUv])/\\\1/g   # ...but keep issue escapes'      \
+      -e "s/[[:space:]]*$//                    # Remove all trailing whitespace" \
+      -e "/./!d                                # Remove all empty lines!"        \
       "$inFile" > "$outFile"
 
   [[ "$show" == "yes" ]] && cmdShow "$outFile"

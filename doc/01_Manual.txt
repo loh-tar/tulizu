@@ -109,6 +109,8 @@ so called tizu-file. Look at the example, or the others shipped with tulizu at
 tulizu parses any file by the 'make' command for its own tags. These tags
 consist of a colon : followed by the letters tu and usually ends with a colon.
 
+Empty lines will always removed from the generated issue file.
+
 Only for completeness: 'tizu' is short for 'tulizu izu' :-)
 
 
@@ -225,6 +227,11 @@ Text attributes
 
 4-4- Notes To Tags
 --------------------
+- To force an blank line use a No-Color-Tag or any other Color-Tag. This is
+  particularly important in connection with the Razor-Tag to prevent undesirable
+  effects. Make sure that the Razor-Tag cut not all Color-Tags from a line,
+  resulting in a completely empty line.
+
 - Tags can be expanded with spaces before the end colon, e.g. :tuC1      :
   The idea is to adjust following content with lines above or below for better
   human readability. That's the reason of the Dummy-Tag.
