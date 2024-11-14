@@ -312,7 +312,7 @@ The author of that all
 
 7- Thanks To
 ==============
-All contributors of stackexchange.com, bash-hackers.org, dict.cc, google.com,
+All contributors of stackexchange.com, bash-hackers.org, dict.cc, deepl.com,
 many more I have miss to note (sorry!), but not github.com for kindly hosting.
 Last but not least: Mom & Dad and archlinux.org
 
