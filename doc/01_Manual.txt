@@ -99,6 +99,15 @@ show
   When you view a file containing a clear screen sequence is these removed
   before displaying.
 
+make
+  When you specify an not known option is a warning printed, but if you specify
+  an undefined number to an option is not. The behavior depends then on the
+  respective option. In case of colors cN will be all colors removed, which is
+  quite useful. In case of razors zN, will nothing be cut, which is perfectly
+  appropriate. But in the case of any other custom option, any line containing
+  that tag will be removed in the resulting file, which may look surprisingly
+  interesting, but in most cases rather ugly.
+
 
 4- tizu File Format
 ======================

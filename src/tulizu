@@ -229,8 +229,8 @@ cmdHelp() {
     echo "${ind}Show available files matching 'logo' with color option 3:"
     echo "${ind}${ind}$myName list logo show c3"
     echo
-    echo "${ind}Install a file of your taste:"
-    echo "${ind}${ind}$myName l big s c2"
+    echo "${ind}Install a file of your taste with all colors removed:"
+    echo "${ind}${ind}$myName l foo.bar s c0"
     echo "${ind}${ind}$myName i             # you will prompted to become root"
     echo
     echo "${ind}Generate an issue file out of your own tizu:"
@@ -475,6 +475,10 @@ cmdMake() {
     razorActions="s/:tuR${op:1} *:.*:tuR${op:1} *://g ; $razorActions"
   done
 
+  if (( ${#colors[@]} == 0 )) ; then
+    # User forces not to use colors at all
+    setColors="s/:tuC[1-9]* *:/$Normal/g ; $setColors"
+  fi
   for (( i=0; i < ${#colors[@]}; i++ )); do
     j=$(( i+1 ))
     setColors="s/:tuC$j *:/$Normal${colors[i]}/g ; $setColors"
