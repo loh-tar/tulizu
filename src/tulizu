@@ -468,14 +468,14 @@ cmdMake() {
   keepOptions=${keepOptions%;*}
   setColors=${setColors%;*}
 
-  sed -e "$keepOptions                      # Do it first, and then..."       \
-      -e "/:tu#/d                           # ...remove remaining comments"   \
-      -e "$setColors                        # Now we have less colors to set" \
-      -e "s/:tuClearScreen:/$clearScreen/g"                                   \
-      -e "s/:tuDY *://g                     # Dummy, do nothing"              \
-      -e "s/:tuNC *:/$Normal/g              # No Color"                       \
-      -e 's/\\/\\\\/g                       # Double all backslashes...'      \
-   -r -e 's/\\\\([46bdslmnoOrtuUv])/\\\1/g  # ...but keep issue escapes'      \
+  sed -e "$keepOptions                         # Do it first, and then..."       \
+      -e "/:tu#/d                              # ...remove remaining comments"   \
+      -e "$setColors                           # Now we have less colors to set" \
+      -e "s/:tuClearScreen:/$clearScreen/g"                                      \
+      -e "s/:tuDY *://g                        # Dummy, do nothing"              \
+      -e "s/:tuNC *:/$Normal/g                 # No Color"                       \
+      -e 's/\\/\\\\/g                          # Double all backslashes...'      \
+   -r -e 's/\\\\([46bdesSlmnoOrtuUv])/\\\1/g   # ...but keep issue escapes'      \
       "$inFile" > "$outFile"
 
   [[ "$show" == "yes" ]] && cmdShow "$outFile"
@@ -500,6 +500,14 @@ cmdShow() {
     return
   fi
 
+  if [[ $gettyCanShow == "yes" ]]; then
+    # We have to take care of the possible clear screen sequence
+    sed -e "s/$clearScreen//g" "$file" > "$tmpPath/$tmpFile-extra"
+    agetty --show-issue --issue-file "$tmpPath/$tmpFile-extra"
+    rm "$tmpPath/$tmpFile-extra"
+    return
+  fi
+
   # Do not init variables twice
   if [[ -z $escDate ]]; then
     # See manpage of agetty below 'ISSUE ESCAPES'
@@ -512,7 +520,7 @@ cmdShow() {
     escTTY="tty1"                     # \l FIXME: ...to show a real name
     escArch=$(uname -m)               # \m
     escHostName=$(uname -n)           # \n
-    if which hostname 2>/dev/null     # \o 'hostname -d' is not always available
+    if command -v hostname >/dev/null 2>&1  # \o 'hostname -d' is not always available
       then escNISDomain=$(hostname -d)
       else escNISDomain="(none)"
     fi
@@ -548,6 +556,14 @@ cmdShow() {
 #
 # Main
 #
+
+# Newer versions of agetty can show itself an issue file, so we do not
+# need to fake some output
+if command -v agetty >/dev/null 2>&1 &&  agetty --help|grep -q -- "--show-issue"
+  then gettyCanShow="yes"
+  else gettyCanShow="no"
+fi
+
 cmd=$1 && shift
 case $cmd in
   doc|d)      cmdDoc "$@"                                             ; ;;

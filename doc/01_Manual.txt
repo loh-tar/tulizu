@@ -112,11 +112,63 @@ consist of a colon : followed by the letters tu and usually ends with a colon.
 Only for completeness: 'tizu' is short for 'tulizu izu' :-)
 
 
-4-1- tizu File Tags
+4-1- tizu File Name
 ---------------------
+From a technical point of view, of course, it doesn't matter what the file is
+called, but since the list command search and filter for the file name, it is
+useful to have all files follow a certain pattern.
+
+  <system/distribution>-<size>-logo-<type>-<size>-lettering-<type>.tizu
+
+A <size> is relative, of course, but let's put it this way:
+
+  Logo height       Wording
+     1-6              small
+    7-10              No extra size, just logo
+    11-15             medium
+    16-20             large
+    21-               huge
+
+  Lettering height  Wording
+     1-3              small
+     4-6              No extra size, just lettering
+     7-8              medium
+     9-13             large
+    14-               huge
+
+However, even more important than this rather rough naming scheme is that each
+individual file can be selected unambiguously. For this reason, type is there
+above. Type can be anything that makes sense, resulting in e.g.:
+
+  logo-simple, logo-dots, johns-logo, pauls-logo, beastie-logo
+
+With the lettering, it is particularly useful to specify the used font or if you
+have something modified describe the change, e.g.:
+
+  Doh-lettering, lettering-condensed, lettering-wide
+
+And finally, you can add any kind of additional attribute or author name if no
+unique name has yet been found.
+
+
+4-2- tizu File Tags
+---------------------
+:tu# Author=<name>
+  You've probably guessed it. Place here what ever you like, your full name,
+  only a nick, e-mail or combinations of these. If your work is based on some
+  one else, add a hint too
+
+:tu# Desc=<description>
+  The Description-Tag should describe in ~80 chars the big picture with as much
+  detail as possible, but without mentioning anything unimportant or redundant
+
 :tu#
   The Comment-Tag. The line will entirely removed. There is no end colon needed.
-  Many of the other tags looks in front as this Comment-Tag, do not be confused
+  Many of the other tags looks in front as this Comment-Tag, do not be confused!
+  Use it also to add more credits, like where you found the art, or what tools
+  you have used to create this file, e.g. what FIGlet font do we see or what
+  ASCII editor/converter was used. Maybe this way someone will be inspired to
+  create something new
 
 :tu# <c><n>:
   The Option-Tag is removed in place by make command when the option <c><n> was
@@ -127,9 +179,6 @@ Only for completeness: 'tizu' is short for 'tulizu izu' :-)
 
 :tu# Opt:<c>=<name>
   The Option-Name-Tag introduce an option with a hint for the user
-
-:tu# Author=<name>
-  You've probably guessed it
 
 :tu# Colors<n>=<color1> [<color2> <colorN> ...]
 :tu# Colors=<color1> [<color2> <colorN> ...]
@@ -153,7 +202,7 @@ Only for completeness: 'tizu' is short for 'tulizu izu' :-)
   line before any effective content
 
 
-4-2- Available Colors And Attributes
+4-3- Available Colors And Attributes
 --------------------------------------
 All names must be prefixed by a dollar sign at the Color-Array-Tag, e.g. $Green.
 
@@ -167,7 +216,7 @@ Text attributes
   Normal, Bold, UScore, Blink, RVideo
 
 
-4-3- Notes To Tags
+4-4- Notes To Tags
 --------------------
 - The color or attributes tags :tuCn:, :tuNC: and :tuDY: could be expanded with
   spaces before the end colon, e.g. :tuC1      :
@@ -217,14 +266,22 @@ https://bbs.archlinux.org/viewtopic.php?pid=515872#p515872
 --------------------
 See man page of agetty, or the getty you use, below 'ISSUE ESCAPES'.
 
-NOTE: Not all escapes are supported by 'show' command, or only with fake data.
-      See source code for details.
+NOTE: Not all escapes are supported by 'show' command, or only with fake data,
+      when you are not using agetty v2.35 or later. See source code for details.
+
+For your convenience, an issue demo file is available, which shows all agetty
+escape codes in action.
+
+  $ tulizu list esc.demo show
 
 
-5-2- Things Of Interest
+5-3- Things Of Interest
 -------------------------
 FIGlet fonts
   www.figlet.org
+
+Caca Labs, fonts and more
+  http://caca.zoy.org/
 
 aewan editor
   aewan.sourceforge.net
