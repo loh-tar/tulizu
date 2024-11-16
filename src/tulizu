@@ -477,7 +477,7 @@ cmdMake() {
 
   if (( ${#colors[@]} == 0 )) ; then
     # User forces not to use colors at all
-    setColors="s/:tuC[1-9]* *:/$Normal/g ; $setColors"
+    setColors="s/:tuC[0-9]* *:/$Normal/g ; $setColors"
   fi
   for (( i=0; i < ${#colors[@]}; i++ )); do
     j=$(( i+1 ))
