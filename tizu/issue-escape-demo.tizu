@@ -1,13 +1,13 @@
 :tu# Author=loh.tar
-:tu# Desc=Shows all issue escapes in action as listed in agetty man page
+:tu# Desc=Shows all issue escapes in action as listed in agetty man page, as well as all available colors
 :tu# The design and color scheme does not claim to be particularly beautiful or functional :-)
 :tu#
 :tu# c1=Archie
-:tu# Colors1=$Cyan $Bold$Cyan $White $Bold$White $Bold$Black
+:tu# Colors1=$Cyan $Bold$Cyan $White $Bold$White $Bold$Black    $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White
 :tu# c2=Paulchen
-:tu# Colors2=$Red $Bold$Red $Bold$White $Normal $Bold$Black
+:tu# Colors2=$Red $Bold$Red $Bold$White $Normal $Bold$Black     $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White
 :tu# c3=Vader
-:tu# Colors3=$Bold$Black $Normal $White $Bold$White $Normal
+:tu# Colors3=$Bold$Black $Normal $White $Bold$White $Normal     $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White
 :tu#
 :tu#ClearScreen:
 :tu#
@@ -29,4 +29,7 @@
 :tuC1:User(s) No      :tuC5:\:tuC5:u:tuC1:: :tuC3:\u:tuNC:
 :tuC1:User(s)         :tuC5:\:tuC5:U:tuC1:: :tuC3:\U:tuNC:
 :tuC2:OS Version      :tuC5:\:tuC5:v:tuC2:: :tuC4:\v:tuNC:
+:tuNC:
+:tuC2:Colors          :tuC6:Black :tuC7:Red :tuC8:Green :tuC9:Yellow :tuC10:Blue :tuC11:Magenta :tuC12:Cyan :tuC13:White:tuNC:
+:tuC2:Bold Colors     :tuC14:Black :tuC15:Red :tuC16:Green :tuC17:Yellow :tuC18:Blue :tuC19:Magenta :tuC20:Cyan :tuC21:White:tuNC:
 :tuNC:
