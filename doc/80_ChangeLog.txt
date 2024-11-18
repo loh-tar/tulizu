@@ -1,10 +1,21 @@
+Not Yet Released  v0.3
+=======================================
+New tizu files:
+  Debian, Thanks to Vidy007
+
+- New Razor-Tag with option z
+- Enhance option c to remove all colors
+- Use new version of agetty at show command, if available
+- Fix/improve wildcards in search pattern
+
+
 2017-10-24  v0.2
 =======================================
-New: Fill \4 escape with fake data
-
 New tizu files:
   Parabola and BlackArch, Thanks to karlch
   RaspberryPi
+
+- Fill \4 escape with fake data
 
 
 2016-01-06  v0.1
