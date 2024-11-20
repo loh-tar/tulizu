@@ -3,6 +3,7 @@
 :tu#
 :tu# Razor1=Remove the logo
 :tu# Razor2=Remove the lettering
+:tu# Razor3=Remove the message below the lettering
 :tu#
 :tu# Colors1=$Bold$Red $Bold$Red $Bold$White
 :tu# Colors2=$Bold$White $Bold$Red $Bold$White
@@ -19,7 +20,6 @@
 :tu# m1=Welcome with system info
 :tu# m2=Welcome message
 :tu# m3=Terse to the point info
-:tu# m4=No message at all
 :tu#
 :tuClearScreen:
 :tu#
@@ -32,9 +32,8 @@
 :tuR1::tuC1: :$, :tuC2:'._:tuC1:`""'      :tuR1::tuR2::tuDY::tuC3::tu# l1:| (_| |  __| |_) | | (_| | | | |                       :tuR2:
 :tuR1::tuC1: :$, :tuC2:'._:tuC1:`""'      :tuR1::tuR2::tuDY::tuC3::tu# l2:| |_| |  __| |_| | | |_| | | | |                       :tuR2:
 :tuR1::tuC1:  :$o             :tuDY      ::tuR1::tuR2::tuC3              : \__,_|\___|_.__/|_|\__,_|_| |_|                       :tuR2:
-:tuR1::tuC1:    "%_                       :tuR1::tuNC:
-:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuNC              : Welcome at \n on \l - \s \r                           :tuR2::tu# m1:
-:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuNC              : Welcome at \n on \l                                   :tuR2::tu# m2:
-:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuNC              : \l on \n - \s \r                                      :tuR2::tu# m3:
-:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuNC              :                                                       :tuR2::tu# m4:
+:tuR1::tuC1:    "%_                       :tuR1::tuR2::tuR3::tuNC:                                                         :tuR3:
+:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuR3::tuNC        : Welcome at \n on \l - \s \r                     :tuR3::tuR2::tu# m1:
+:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuR3::tuNC        : Welcome at \n on \l                             :tuR3::tuR2::tu# m2:
+:tuR1::tuC1:      `":._       :tuDY      ::tuR1::tuR2::tuR3::tuNC        : \l on \n - \s \r                                :tuR3::tuR2::tu# m3:
 :tuNC:
