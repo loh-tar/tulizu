@@ -1,4 +1,4 @@
- :tu# Author=loh.tar
+:tu# Author=loh.tar
 :tu# Desc=The FIGlet standard font with a changed double-storey a
 :tu# The a is grepped from linux_logo_archcustom, couldn't find the FIGlet font
 :tu#
@@ -28,6 +28,6 @@
 :tuNC:
 :tuC3::tu# m1:  A simple, lightweight Linux distribution.
 :tuC3::tu# m2:  Welcome to \n on :tuC4:\l:tuC3:. Today is \d
-:tuC3::tu# m3:  \s \r :tu42:(\l):tuC3: \d \t
+:tuC3::tu# m3:  \s \r :tuC4:(\l):tuC3: \d \t
 :tuNC:
 :tu#:
