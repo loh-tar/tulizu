@@ -13,9 +13,9 @@
 :tu# m2=Stallman greeting
 :tu#
 :tuC1:  Black Arch \s \m
-:tuNC:
+:tuDY:
 :tuC1:  \d  --  \t
-:tuNC:
+:tuDY:
 :tuC2:      mmdmhhyhhyyhhdhhdhmdmNNN
 :tuC2:   NNddhhhyyhhysyyhyhhhyhhdhdmmN
 :tuC2:   NmddhyhhhhsyhoshhhyhdhhhdmdmNN
@@ -38,7 +38,7 @@
 :tuC2:           NNNmmN   mNNNN
 :tuC2:            NNNNN   NNNN
 :tuC2:               NN   N
-:tuNC:
+:tuDY:
 :tuC1::tu# m1:  Welcome home, stranger!
 :tuC1::tu# m2:  Happy hacking!
 :tuC1:

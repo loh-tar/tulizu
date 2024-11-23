@@ -212,8 +212,10 @@ unique name has yet been found.
   It's the No-Color-Tag. It's the same as if to note a color as $Normal
 
 :tuDY:
-  The Dummy-Tag. Does nothing at all. See notes below about tags to become an
-  idea why it is available
+  The Dummy-Tag. Does nothing at all! But it forces an empty line if it appears
+  alone in a line. This is particularly useful in conjunction with the Razor-Tag
+  to prevent undesirable effects. Make sure in such case that the Razor-Tag cut
+  not everything from a line, resulting in a completely empty line.
 
 :tuClearScreen:
   You may have already an idea. It should be, if used, the first tag on an own
@@ -236,14 +238,9 @@ Text attributes
 
 4-4- Notes To Tags
 --------------------
-- To force an blank line use a No-Color-Tag or any other Color-Tag. This is
-  particularly important in connection with the Razor-Tag to prevent undesirable
-  effects. Make sure that the Razor-Tag cut not all Color-Tags from a line,
-  resulting in a completely empty line.
-
 - Tags can be expanded with spaces before the end colon, e.g. :tuC1      :
   The idea is to adjust following content with lines above or below for better
-  human readability. That's the reason of the Dummy-Tag.
+  human readability. That's the initial reason of the Dummy-Tag.
 
 - Do not use the characters c or z as an own created option. They are used by
   the Color-Array-Tag resp Razor-Tag.

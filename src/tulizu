@@ -493,12 +493,12 @@ cmdMake() {
       -e "$razorActions                        # Cut between Razor-Tags"         \
       -e "s/:tuR[1-9] *://g                    # Remove not activated Razor Tags"\
       -e "s/:tuClearScreen:/$clearScreen/g"                                      \
-      -e "s/:tuDY *://g                        # Dummy, do nothing"              \
       -e "s/:tuNC *:/$Normal/g                 # No Color"                       \
       -e 's/\\/\\\\/g                          # Double all backslashes...'      \
    -r -e 's/\\\\([46bdesSlmnoOrtuUv])/\\\1/g   # ...but keep issue escapes'      \
       -e "s/[[:space:]]*$//                    # Remove all trailing whitespace" \
       -e "/./!d                                # Remove all empty lines!"        \
+      -e "s/:tuDY *://g                        # Remove Dummy at the very last"  \
       "$inFile" > "$outFile"
 
   [[ "$show" == "yes" ]] && cmdShow "$outFile"
