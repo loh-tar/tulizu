@@ -3,11 +3,11 @@
 :tu# The design and color scheme does not claim to be particularly beautiful or functional :-)
 :tu#
 :tu# c1=Archie
-:tu# Colors1=$Cyan $Bold$Cyan $White $Bold$White $Bold$Black    $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White
-:tu# c2=Paulchen
-:tu# Colors2=$Red $Bold$Red $Bold$White $Normal $Bold$Black     $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White
+:tu# Colors1=$Cyan $Bold$Cyan $White $Bold$White $Bold$Black    $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White   $Cyan $Cyan$Bold $Cyan$Blink $Cyan$Faint $Cyan$Invert $Cyan$UScore
+:tu# c2=Bloody Mary
+:tu# Colors2=$Red $Bold$Red $Bold$White $Normal $Bold$Black     $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White   $Red $Red$Bold $Red$Blink $Red$Faint $Red$Invert $Red$UScore
 :tu# c3=Vader
-:tu# Colors3=$Bold$Black $Normal $White $Bold$White $Normal     $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White
+:tu# Colors3=$White $Bold$White $Bold$Black $Normal $Normal     $Black $Red $Green $Yellow $Blue $Magenta $Cyan     $White $Bold$Black $Bold$Red $Bold$Green $Bold$Yellow $Bold$Blue $Bold$Magenta $Bold$Cyan $Bold$White   $White $White$Bold $White$Blink $White$Faint $White$Invert $White$UScore
 :tu#
 :tu#ClearScreen:
 :tu#
@@ -32,4 +32,11 @@
 :tuDY:
 :tuC2:Colors          :tuC6:Black :tuC7:Red :tuC8:Green :tuC9:Yellow :tuC10:Blue :tuC11:Magenta :tuC12:Cyan :tuC13:White:tuNC:
 :tuC2:Bold Colors     :tuC14:Black :tuC15:Red :tuC16:Green :tuC17:Yellow :tuC18:Blue :tuC19:Magenta :tuC20:Cyan :tuC21:White:tuNC:
+:tuDY:
+:tuC2:Attributes      :tuC22:This normal text is now :tuAB:Bold:tuAR: then :tuAK:Blinking:tuAk: going :tuAF:Faint:tuAR: and finally :tuAI:Inverted:tuAi: and :tuAU:Underscored:tuAu: Def back/foreground is not shown
+:tuC2:Attributes      :tuC23:This  bold  text is now :tuAB:Bold:tuAR: then :tuAK:Blinking:tuAk: going :tuAF:Faint:tuAR: and finally :tuAI:Inverted:tuAi: and :tuAU:Underscored:tuAu: Def back/foreground is not shown
+:tuC1:Attributes      :tuC24:This  blink text is now :tuAB:Bold:tuAR: then :tuAK:Blinking:tuAk: going :tuAF:Faint:tuAR: and finally :tuAI:Inverted:tuAi: and :tuAU:Underscored:tuAu: Def back/foreground is not shown
+:tuC1:Attributes      :tuC25:This  faint text is now :tuAB:Bold:tuAR: then :tuAK:Blinking:tuAk: going :tuAF:Faint:tuAR: and finally :tuAI:Inverted:tuAi: and :tuAU:Underscored:tuAu: Def back/foreground is not shown
+:tuC2:Attributes      :tuC26:This invert text is now :tuAB:Bold:tuAR: then :tuAK:Blinking:tuAk: going :tuAF:Faint:tuAR: and finally :tuAI:Inverted:tuAi: and :tuAU:Underscored:tuAu: Def back/foreground is not shown
+:tuC2:Attributes      :tuC27:This UScore text is now :tuAB:Bold:tuAR: then :tuAK:Blinking:tuAk: going :tuAF:Faint:tuAR: and finally :tuAI:Inverted:tuAi: and :tuAU:Underscored:tuAu: Def back/foreground is not shown
 :tuNC:

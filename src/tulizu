@@ -34,12 +34,21 @@ declare    pattern              # Search pattern by doc and list
 
 # More about colors at Arch Wiki
 # wiki.archlinux.org/index.php/Color_Bash_Prompt
+# A full list of escape codes is on Wikipedia
+# https://en.wikipedia.org/wiki/ANSI_escape_code#Select_Graphic_Rendition_parameters
 # HINT: shellcheck complains about most of these color declarations, but we use these indirect
-declare -r Normal=$'\e[0m'      # All attributes off
-declare -r Bold=$'\e[1m'        # Or bright, depend on your terminal
+declare -r Normal=$'\e[0m'      # All attributes off, it should have been better called Reset
+declare -r Bold=$'\e[1m'        # Or bright, increased intensity, depend on your terminal
+declare -r Faint=$'\e[2m'       # Faint, decreased intensity, or dim
 declare -r UScore=$'\e[4m'      # Underscore
+declare -r NoScore=$'\e[24m'    # Neither singly nor doubly underlined
 declare -r Blink=$'\e[5m'
-declare -r RVideo=$'\e[7m'      # Reverse video
+declare -r NoBlink=$'\e[25m'    # Turn blinking off
+declare -r Invert=$'\e[7m'      # or Reverse video
+declare -r NotInv=$'\e[27m'     # Not Invert
+declare -r Regular=$'\e[22m'    # Normal intensity, Neither bold nor faint; color changes where intensity is implemented as such
+declare -r DefFore=$'\e[39m'    # Default foreground color
+declare -r DefBack=$'\e[49m'    # Default background color
 
 # Foreground colors
 declare -r Black=$'\e[30m'
@@ -492,8 +501,19 @@ cmdMake() {
       -e "$setColors                           # Now we have less colors to set" \
       -e "$razorActions                        # Cut between Razor-Tags"         \
       -e "s/:tuR[1-9] *://g                    # Remove not activated Razor Tags"\
-      -e "s/:tuClearScreen:/$clearScreen/g"                                      \
-      -e "s/:tuNC *:/$Normal/g                 # No Color"                       \
+      -e "s/:tuClearScreen:/$clearScreen/g     #                              "  \
+      -e "s/:tuNC *:/$Normal/g                 #                              "  \
+      -e "s/:tuAB *:/$Bold/g                   #                              "  \
+      -e "s/:tuAF *:/$Faint/g                  #                              "  \
+      -e "s/:tuAR *:/$Regular/g                #                              "  \
+      -e "s/:tuAU *:/$UScore/g                 #                              "  \
+      -e "s/:tuAu *:/$NoScore/g                #                              "  \
+      -e "s/:tuAI *:/$Invert/g                 #                              "  \
+      -e "s/:tuAi *:/$NotInv/g                 #                              "  \
+      -e "s/:tuAK *:/$Blink/g                  #                              "  \
+      -e "s/:tuAk *:/$NoBlink/g                #                              "  \
+      -e "s/:tuDC *:/$DefFore/g                #                              "  \
+      -e "s/:tuDB *:/$DefBack/g                #                              "  \
       -e 's/\\/\\\\/g                          # Double all backslashes...'      \
    -r -e 's/\\\\([46bdesSlmnoOrtuUv])/\\\1/g   # ...but keep issue escapes'      \
       -e "s/[[:space:]]*$//                    # Remove all trailing whitespace" \

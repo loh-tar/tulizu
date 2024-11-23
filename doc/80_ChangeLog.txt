@@ -4,6 +4,7 @@ New tizu files:
   Debian, Thanks to Vidy007
 
 - New Razor-Tag with option z
+- Add (more) text attribute tags
 - Enhance option c to remove all colors
 - Use new version of agetty at show command, if available
 - Fix/improve wildcards in search pattern

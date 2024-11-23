@@ -221,6 +221,23 @@ unique name has yet been found.
   You may have already an idea. It should be, if used, the first tag on an own
   line before any effective content
 
+The usefulness of the following attribute tags is mostly questionable, as the
+effects rarely correspond to what they are supposed to do. At least in our use
+case. For this reason, those that tend to work are marked with a plus and those
+that tend to deliver unexpected results are marked with a minus sign.
+
+  + :tuAB: Bold
+  + :tuAF: Faint, decreased intensity, or dim
+  + :tuAR: Regular, normal intensity, neither bold nor faint
+  - :tuAU: Underscore
+  - :tuAu: Neither singly nor doubly underlined
+  + :tuAI: Invert or Reverse Video, Swap foreground and background colors
+  + :tuAi: Not Invert
+  - :tuAK: Blink
+  - :tuAk: Turn blinking off
+  - :tuDC: Default foreground color
+  - :tuDB: Default background color
+
 
 4-3- Available Colors And Attributes
 --------------------------------------
@@ -233,7 +250,7 @@ Background colors
   Are the same as foreground colors but prefixed with 'on', e.g. onRed
 
 Text attributes
-  Normal, Bold, UScore, Blink, RVideo
+  Normal, Bold, Faint, UScore, Blink, Invert
 
 
 4-4- Notes To Tags
