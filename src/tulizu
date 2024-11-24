@@ -206,6 +206,7 @@ cmdHelp() {
     [[ $1 == "fullHelp" ]] && helpTxt="You read it now" || helpTxt="Give some more help"
     echo "${ind}help, h${tab}${tab}$helpTxt"
 
+    echo "${ind}ekam, e <inFile>${tab}Create a tizu file out of <inFile> and print the file name"
     echo "${ind}install, i [<file>]${tab}Install <file> as /etc/issue. Default file is <tmpFile>"
     echo "${ind}list, l [<pattern>]${tab}List issue files shipped with $myName matching <pattern>"
     echo "${ind}make, m <inFile>${tab}Create new issue file"
@@ -244,6 +245,9 @@ cmdHelp() {
     echo
     echo "${ind}Generate an issue file out of your own tizu:"
     echo "${ind}${ind}$myName m your.tizu --opt c3 x2 --tofile your-color3-x-variant2.issue"
+    echo
+    echo "${ind}Create a tizu template file that you need to edit further out of some ASCII art file:"
+    echo "${ind}${ind}$myName ekam some-ascii-art.file"
 }
 
 cmdInstall() {
@@ -524,6 +528,168 @@ cmdMake() {
   [[ "$show" == "yes" ]] && cmdShow "$outFile"
 }
 
+cmdEkam() {
+  local inFile=$1
+  local outFile="$tmpPath/$myName-ekam-generated.tizu"
+
+  checkFile "$inFile" "Source"
+
+  # Create a nice handy header, so the file is working
+  cat << 'EOF' > "$outFile"
+:tu# Author=Your ID
+:tu# Desc=A nice Text
+:tu# <Don't hesitate to add more info or credits as comment>
+:tu#
+:tu# Tip: You may want to re-order/re-number the color tags by some S&R. To avoid trouble
+:tu#      you may first rename all :tuC to :tuX and then one by one :tuX<n> to :tuC<m>
+:tu#
+EOF
+
+  # We replace ASCII codes with Color-Tags in two runs which look almost the
+  # same, strange, hu? tulizu uses a concatenation of single escape codes to
+  # build 'complex colors' like bold-red. This is here and now counted as two
+  # colors and we fix that in the second run. Smarter software concatenate
+  # bold-red as only one escape code, which is counted here as one color
+  (( i=1 ))
+  declare -A tagXColor
+  # Replacing color escape codes is cumbersome, we need to escape them
+  # Thanks to https://stackoverflow.com/a/29613573
+  script='s/[^^]/[&]/g; s/\^/\\^/g'
+  # This simplified regex match any escape-m ASCII code, not only colors
+  for asciiCode in $(grep -Eo $'\e\[([;0-9]*m)' "$inFile" |sort|uniq) ; do
+    escAsciiCode=$(sed "$script" <<<"$asciiCode")
+    replaceAsciiCodes="s/$escAsciiCode/:tXC$i:/g ; $replaceAsciiCodes"
+    colVar=""
+    # escAsciiCode looks like "ESC[0;34;5;40;100m" we cut first two "ESC["  char
+    # and replace "m" by ";" so we have then "0;34;5;40;100;" ready to ...
+    escRawCode=${asciiCode:2}; escRawCode="${escRawCode/m/;}"
+    if [[ "$escRawCode" =~ ^[34]8.+ ]] ; then
+      exitError "File uses RGB color settings. Not supported, sorry!"
+    fi
+    # ...read code-number by code-number
+    while read -r -d';' code ; do
+      case $code in
+          # tulizu prefix each color anyway with $Normal, to avoid unneeded long and ugly
+          # color-strings we omit Normal here and deal later with it, see below
+          0) true                                                           ; ;;
+        # 0) colVar="${colVar}\$Normal"                                     ; ;;
+
+          # Attributes
+          1) colVar="${colVar}\$Bold"                                       ; ;;
+          2) colVar="${colVar}\$Faint"                                      ; ;;
+          4) colVar="${colVar}\$UScore"                                     ; ;;
+         24) colVar="${colVar}\$NoScore"                                    ; ;;
+          5) colVar="${colVar}\$Blink"                                      ; ;;
+         25) colVar="${colVar}\$NoBlink"                                    ; ;;
+          7) colVar="${colVar}\$Invert"                                     ; ;;
+         27) colVar="${colVar}\$NotInv"                                     ; ;;
+         22) colVar="${colVar}\$Regular"                                    ; ;;
+         39) colVar="${colVar}\$DefFore"                                    ; ;;
+         49) colVar="${colVar}\$DefBack"                                    ; ;;
+         # Classic color codes
+         30) colVar="${colVar}\$Black"                                      ; ;;
+         31) colVar="${colVar}\$Red"                                        ; ;;
+         32) colVar="${colVar}\$Green"                                      ; ;;
+         33) colVar="${colVar}\$Yellow"                                     ; ;;
+         34) colVar="${colVar}\$Blue"                                       ; ;;
+         35) colVar="${colVar}\$Magenta"                                    ; ;;
+         36) colVar="${colVar}\$Cyan"                                       ; ;;
+         37) colVar="${colVar}\$White"                                      ; ;;
+         40) colVar="${colVar}\$onBlack"                                    ; ;;
+         41) colVar="${colVar}\$onRed"                                      ; ;;
+         42) colVar="${colVar}\$onGreen"                                    ; ;;
+         43) colVar="${colVar}\$onYellow"                                   ; ;;
+         44) colVar="${colVar}\$onBlue"                                     ; ;;
+         45) colVar="${colVar}\$onMagenta"                                  ; ;;
+         46) colVar="${colVar}\$onCyan"                                     ; ;;
+         47) colVar="${colVar}\$onWhite"                                    ; ;;
+         # We can "bright" foreground colors build this way..
+         90) colVar="${colVar}\$Bold\$Black"                                ; ;;
+         91) colVar="${colVar}\$Bold\$Red"                                  ; ;;
+         92) colVar="${colVar}\$Bold\$Green"                                ; ;;
+         93) colVar="${colVar}\$Bold\$Yellow"                               ; ;;
+         94) colVar="${colVar}\$Bold\$Blue"                                 ; ;;
+         95) colVar="${colVar}\$Bold\$Magenta"                              ; ;;
+         96) colVar="${colVar}\$Bold\$Cyan"                                 ; ;;
+         97) colVar="${colVar}\$Bold\$White"                                ; ;;
+        # ..but background is messy, so we keep it simple
+        100) colVar="${colVar}\$onBlack"                                    ; ;;
+        101) colVar="${colVar}\$onRed"                                      ; ;;
+        102) colVar="${colVar}\$onGreen"                                    ; ;;
+        103) colVar="${colVar}\$onYellow"                                   ; ;;
+        104) colVar="${colVar}\$onBlue"                                     ; ;;
+        105) colVar="${colVar}\$onMagenta"                                  ; ;;
+        106) colVar="${colVar}\$onCyan"                                     ; ;;
+        107) colVar="${colVar}\$onWhite"                                    ; ;;
+        *) warn "Not supported ESC code $code - Have it marked as 'x${code}x'"
+           printf ":tu# FIXME: Not supported ESC color code %s - Search here for 'x%sx'\n" "$code" "$code" >> "$outFile"
+           unknownEScFound="1"
+           colVar="${colVar}\$x${code}x"; ;;
+      esac
+    done < <(printf %s "${escRawCode}")
+
+    tagXColor["tXC$i"]="$colVar"
+    (( i++ ))
+  done
+
+  # We want a nice looking and helpful file
+  if [[ -n $unknownEScFound ]] ; then
+    cat << EOF >> "$outFile"
+:tu#
+:tu# Escape codes can be found e.g. at Wikipedia
+:tu#     https://en.wikipedia.org/wiki/ANSI_escape_code#Select_Graphic_Rendition_parameters
+:tu# You may want to fix your source file and re-run the ekam command
+:tu# or fix here the dummy variable(s)
+:tu#
+:tu#
+EOF
+  fi
+
+  # Here is the beef! First course with dummy/placeholder Color-Tags
+  sed -e "$replaceAsciiCodes" \
+      -e "s/$clearScreen/:tuClearScreen:/g      # Just for completeness" \
+      -e 's/\\\\/\\/g                           # Make double backslashes single ones' \
+      -e 's/^$/:tuDY:/g                         # Fill empty lines so then will later not auto-removed' \
+      "$inFile" >> "$outFile"
+
+  # Crunch successive dummy tags into one tag, like ":tXC1::tXC8::tXC3:" ==> ":tuC4:"
+  (( i=1 ))
+  for tags in $(grep -Eo "(:tXC[0-9]+:)+" "$outFile" |sort|uniq) ; do
+    replaceTags="s/$tags/:tuC$i:/g ; $replaceTags"
+    fullColor=""
+    while read -r -d':' tagX ; do
+      [[ -z $tagX ]] && continue
+      fullColor="${fullColor}${tagXColor["$tagX"]}"
+    done < <(printf %s "${tags}")
+    # Now take care for Normal-Only colors
+    [[ -z $fullColor ]] && fullColor="\$Normal"
+    # Let's add a numbering to the list of colors in the color set to make it easier to identify a color
+    while (( ${#fullColor} < 7 )) ; do fullColor="${fullColor} "; done
+    allColors="${allColors}${fullColor} "
+    (( padSize = ${#fullColor} - 3 - ${#i}))
+    # Fill padding with blanks https://stackoverflow.com/a/5349842
+    printf -v padding ' %.0s' $(eval "echo {1.."$((padSize))"}");
+    colorNumberIdx="${colorNumberIdx}tuC${i}${padding} "
+    (( i++ ))
+  done
+
+  # All that work for the two or three lines
+  cat << EOF >> "$outFile"
+:tu#
+:tu# c1=Origial colors as auto detected
+:tu# Colors1=${allColors}
+:tu#          ${colorNumberIdx}
+:tu#
+EOF
+
+  # Here is the beef! Second course with final Color-Tags
+  sed -e "$replaceTags" \
+      -e "s/[[:space:]]*$//    # Remove all trailing whitespace" \
+      -i "$outFile"
+
+  info "Created: $outFile"
+}
+
 cmdRestore() {
 #   checkIfRoot
   checkFile "/etc/issue.saved-by-$myName" "Backup"
@@ -615,6 +781,7 @@ case $cmd in
   install|i)  cmdInstall "$@"                                         ; ;;
   list|l)     cmdList "$@"                                            ; ;;
   make|m)     cmdMake "$@"                                            ; ;;
+  ekam|e)     cmdEkam "$@"                                            ; ;;
   restore|r)  cmdRestore                                              ; ;;
   show|s)     cmdShow "$@"                                            ; ;;
   '')         info "Hello! Try -h or h to get some help"              ; ;;

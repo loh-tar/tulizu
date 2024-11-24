@@ -3,6 +3,7 @@ Not Yet Released  v0.3
 New tizu files:
   Debian, Thanks to Vidy007
 
+- New command ekam (make reverse)
 - New Razor-Tag with option z
 - Add (more) text attribute tags
 - Enhance option c to remove all colors

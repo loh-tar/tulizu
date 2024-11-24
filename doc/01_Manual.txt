@@ -84,7 +84,28 @@ trick. Have fun!
 3-2- Converting ASCII-Art
 ---------------------------
 If you have made an ASCII-Art with an editor like aewan you can convert it by
-using the 'make' command.
+using the 'make' command into an issue file. That will apply some changes like
+double backslashes, needed to fit agetty's demands.
+
+But it would be much more nicer to convert your colorful work into a tizu file
+by 'ekam' command (which is make-reverse btw ;-) This will create a tizu file
+that still needs some love, but where the most things are already done.
+
+Known issues:
+
+- If you notice some strange color deviations, the reason could be that your
+  source file set some attribute like bold only once and then changes later only
+  the color, which is still bold, but tulizu reset always all attributes
+
+- If you suddenly see backslashes where there are allegedly none in the original
+  file, you will unfortunately have to remove them manually. These backslashes
+  are interpreted as escape-sequence in the original, but tulizu doubles all
+  backslashes with the exception of a few agetty codes
+
+- The newer codes by aixterm with "bright" colors are only partial tried to map
+  on classic codes
+
+- Files using RGB color codes are not supported
 
 
 3-3- Notes To Commands
