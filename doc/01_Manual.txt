@@ -307,9 +307,9 @@ NOTE: Not all escapes are supported by 'show' command, or only with fake data,
       when you are not using agetty v2.35 or later. See source code for details.
 
 For your convenience, an issue demo file is available, which shows all agetty
-escape codes in action.
+escape codes in action and something more.
 
-  $ tulizu list esc.demo show
+  $ tulizu list demo show
 
 
 5-3- Things Of Interest
