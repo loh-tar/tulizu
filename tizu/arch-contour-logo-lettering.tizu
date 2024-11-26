@@ -1,0 +1,20 @@
+:tu# Author=loh.tar - but all credits goes to dav7
+:tu# Desc=Minimalistic logo and matching lettering of a different kind
+:tu# All credits goes to dav7 https://bbs.archlinux.org/viewtopic.php?id=50845
+:tu# This file was created by ekam from issue/arch-dav7.issue with minimal further edits
+:tu# like the upper case L in the slogan
+:tu#
+:tu# c1=Origial colors by dav7
+:tu# Colors1=$Cyan $Bold$Cyan $White $Bold$White $Cyan $Bold$Cyan $White $Bold$Black $Bold$Magenta $Normal  $Bold$Yellow $Bold$Red $Bold$Green $Bold$Blue
+:tu#          tuC1  tuC2       tuC3   tuC4        tuC5   tuC6      tuC7   tuC8        tuC9          tuC10    tuC11         tuC12    tuC13       tuC14
+:tu#
+:tuClearScreen:
+                       :tuDY                        :                                     :tuC8:| :tuC14:\s \r
+       :tuC2:/\                      :tuDY      ::tuC4:||     :tuC6:| |                   :tuC8:|
+      :tuC2:/  \                     :tuDY      ::tuC4:||     :tuC6:|     _               :tuC8:| :tuC13:\t
+     :tuC2:/ :tuC1:.. :tuC2:\   :tuC4://==\\ ||/= /==\ ||/=\  :tuC6:| | |/ \ |  | \ /     :tuC8:| :tuC13:\d
+    :tuC1:/ .  . \  :tuDY      ::tuC3:||  || ||   |    ||  || :tuC5:| | |  | |  |  X      :tuC8:|
+   :tuC1:/  .  .  \ :tuDY      ::tuC3:\\==/| ||   \==/ ||  || :tuC5:| | |  | \_/| / \     :tuC8:| :tuC12:\U
+  :tuC1:/ ..    .. \   :tuDY      ::tuC7:A simple, lightweight Linux distribution.  :tuDY::tuC8:|
+ :tuC1:/_'        `_\  :tuDY                  :                                           :tuC8:| :tuC9:\l :tuC10:on :tuC11:\n
+:tuNC:
