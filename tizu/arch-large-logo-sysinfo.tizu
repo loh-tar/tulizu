@@ -1,0 +1,32 @@
+:tu# Author=loh.tar - but all credits goes to bavardage
+:tu# Desc=Two-color logo consisting mainly of the letters ARCH and some info the right
+:tu# All credits goes to bavardage https://bbs.archlinux.org/viewtopic.php?pid=387276#p387276
+:tu# This file was created by ekam from issue/arch-bavardage.issue with minimal further edits
+:tu#
+:tu# c1=Origial colors by bavardage
+:tu# Colors1=$Yellow $Bold$Yellow
+:tu#          tuC1    tuC2
+:tu#
+:tuClearScreen:
+:tuC2:
+:tuC2:               +
+:tuC2:               A
+:tuC2:              RCH               :tuC1: Arch Linux \r
+:tuC2:             ARCHA              :tuC1: Time is \t
+:tuC2:             RCHARC             :tuC1: \l @ \n
+:tuC2:            ; HARCH;            :tuC1:
+:tuC2:           +AR.CHARC            :tuC1:
+:tuC2:          +HARCHARCHA           :tuC1:
+:tuC2:         RCHARC:tuC1:HARCH:tuC2:AR;
+:tuC2:        CHA:tuC1:RCHARCHARCHA:tuC2:+
+:tuC2:       R:tuC1:CHARCH   ARCHARC
+:tuC1:     .HARCHA;     ;RCH;`".
+:tuC1:    .ARCHARC;     ;HARCH.
+:tuC1:    ARCHARCHA.   .RCHARCHA`
+:tuC1:   RCHARC'           'HARCHA
+:tuC1:  ;RCHA                 RCHA;
+:tuC1:  RC'                     'HA
+:tuC1: R'                         `C
+:tuC1:'                            `
+:tuNC:
+:tuDY:
