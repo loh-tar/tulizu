@@ -7,6 +7,12 @@
 :tu# Colors1=$Yellow $Bold$Yellow
 :tu#          tuC1    tuC2
 :tu#
+:tu# c2=Paulchen
+:tu# Colors2=$Magenta $Bold$Magenta
+:tu#
+:tu# c3=Vader
+:tu# Colors3=$White $Bold$White
+:tu#
 :tuClearScreen:
 :tuC2:
 :tuC2:               +
