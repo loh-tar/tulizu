@@ -8,6 +8,12 @@
 :tu# Colors1=$Cyan $Bold$Cyan  $Bold$Black $Bold$White $Bold$White $Magenta $White $Yellow $Bold$Red $Bold$Green $Bold$Blue
 :tu#          tuC1  tuC2        tuC3        tuC4        tuC5        tuC6     tuC7   tuC8    tuC9      tuC10       tuC11
 :tu#
+:tu# c2=Paulchen
+:tu# Colors2=$Magenta $Bold$Magenta  $Bold$Black $Bold$White $Bold$White $Magenta $White $Yellow $Bold$Red $Bold$Green $Bold$Blue
+:tu#
+:tu# c3=Vader
+:tu# Colors3=$White $Bold$White  $Bold$Black $Bold$White $Bold$White $Bold$White $White $White $White $White $White
+:tu#
 :tuClearScreen:
                            :tuC2:`                                                      :tuC4:`://-             :tuC2:./-  .-
                           :tuC2:-:                                                      :tuC4:.///-             :tuC2:./-   `
