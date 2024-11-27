@@ -1,0 +1,38 @@
+:tu# Author=loh.tar - but all credits goes to radu242
+:tu# Desc=Screen-filling work in a sophisticated old jeans look
+:tu# All credits goes to radu242 https://bbs.archlinux.org/viewtopic.php?pid=515872#p515872
+:tu# This file was created by ekam from issue/arch-radu242.issue with minimal further edits
+:tu# like the slogan below the logo without linux
+:tu#
+:tu# c1=Origial colors by radu242
+:tu# Colors1=$Cyan $Bold$Cyan  $Bold$Black $Bold$White $Bold$White $Magenta $White $Yellow $Bold$Red $Bold$Green $Bold$Blue
+:tu#          tuC1  tuC2        tuC3        tuC4        tuC5        tuC6     tuC7   tuC8    tuC9      tuC10       tuC11
+:tu#
+:tuClearScreen:
+                           :tuC2:`                                                      :tuC4:`://-             :tuC2:./-  .-
+                          :tuC2:-:                                                      :tuC4:.///-             :tuC2:./-   `
+                         :tuC2:.//:              :tuC4: -:::::::-`    .--- `--:-  `.-----.``  .///-`.....``     :tuC2:./-   `   `   ``````      `
+                        :tuC2:`////-             :tuC4:.//////////:` `////:////..://////////- .//::////////:.   :tuC2:./-  .:   :-`-:::::::.   -:.        -:  `:.      --
+                       :tuC2:`://///.            :tuC4:.---.---////- `/////:-.`:////:--.-:/:` .////:....-////`  :tuC2:./-  -/`  //:.`    `-/.  -/.        :/`  .::`  `::`
+                       :tuC2::///////.          :tuC4:.:/:tuC3:++++++++++- :tuC4:`////.   :tuC3:./++/`      :tuC4:`   .///:      -///.  :tuC2:./-  -:tuC1:+` `++         :tuC2:/:  -/.        :/`   `-:..:-`
+                      :tuC2:-/////////.        :tuC3::hhhhs+/+shdhh/ `yyys`   +yyh/           -+++-      -+++.  :tuC1:-+-  :o` .oo         +/  :o.        /+`     :tuC1:.//-
+                     :tuC2:`://////////`       :tuC3:oddd/     sddd+ .dddd`   /dddy`      `   :dhh/      +hhh-  :tuC1:-o:  :o` `oo         +/  :o.        +o`    .++/+.
+                    :tuC2:-:..://///////`      :tuC3::dddy:``./hddd+ .dddd`   `sdddy/-``./yo- :ddd+      oddd:  :tuC1:-o:  :o`  +o         +/  :o-       .+o`   :+:` -+:`
+                   :tuC2:-////:::////////`      :tuC3:/hddddddddsyd+ .dddd`    `/hdddddddddds`:ddd+      oddd:  :tuC1:-o:  :o`  +o         +/  .++-`  `.:/+o` `/+-    .//.
+                  :tuC2:-/////////////////`      :tuC3:`/+ssso/.+o+- `so+:       `-/+ssss+/.  :ss+-      +yso.  :tuC1:./.  ./   /:         ::   .:/++++/-`//` -/`       :/
+                 :tuC2:-//////////++++/////`
+                :tuC2:-////:tuC1:++++oooooooooo+++.
+               :tuC1:-/+++oooooooooooooooooo+.     :tuC5://=========================---
+              :tuC1::+oooooooo+-..-/+oooooooo+.     :tuC5:\ :tuC11:\s(\m) \r
+            :tuC1:`/ooooooooo:`     .+oooooooo+.     :tuC5:\
+           :tuC1:`/ooooooooo/        .ooooooooo+-     :tuC5:\ :tuC10:\t
+          :tuC1:`/oooooooooo`         /oooooo++++-     :tuC5:\ :tuC10:\d
+         :tuC1:`+ooooooooooo`         :oooooo++/-:.     :tuC5:\
+        :tuC1:.+ooooooooooo+`         :+oooooooo+/-`     :tuC5:\ :tuC9:\U
+       :tuC1:.+oooooo++/:-.`          `..-:/++ooooo+:     :tuC5:\
+      :tuC1:.+oo++/-.`                      `.-:++ooo:     :tuC5:\ :tuC6:\l :tuC7:on :tuC8:\n
+     :tuC1:-++/-.`     :tuC5:A simple, lightweight     :tuC1:`-:++/`    :tuC5:\=========================---
+     :tuC1:-++/-.`         :tuC5:distribution.         :tuC1:`-:++/`
+    :tuC1:.:.`                                       .--
+:tuNC:
+:tuDY:
