@@ -27,6 +27,7 @@ declare -r myDescription="View and customize ASCII art included /etc/issue files
 declare -r issuePath="/usr/share/$myName/issue"
 declare -r tizuPath="/usr/share/$myName/tizu"
 declare    tmpFile="$myName-generated.issue"
+declare    privUtil=""
 # As far as I the FHS understood can we place here our tmp file
 # FIXME: When FHS 3 is common used change to /run/user/...
 declare    tmpPath="/var/run/user/$UID"
@@ -102,6 +103,16 @@ checkFile() {
     exitError "Need ${2,,} file" "${FUNCNAME[1]:3}" # $2 to lower case
   elif [[ ! -f "$1" ]]; then
     exitError "$2 file not found: $1" "${FUNCNAME[1]:3}"
+  fi
+}
+
+setPrivUtil() {
+  if [[ -x "/usr/bin/sudo" ]]; then
+    privUtil="sudo"
+  elif [[ -x "/usr/bin/doas" ]]; then
+    privUtil="doas"
+  else
+    exitError "Privilege escalation binary not found"
   fi
 }
 
@@ -256,7 +267,7 @@ cmdInstall() {
   local -i ok=0
 
 #   checkIfRoot
-
+  setPrivUtil
   if [[ -r "$file" ]]; then
     ok=1
   else
@@ -276,11 +287,11 @@ cmdInstall() {
 
   if [[ ! -f "/etc/issue.saved-by-$myName" ]]; then
     info "Run command: mv /etc/issue /etc/issue.saved-by-$myName"
-    sudo mv "/etc/issue" "/etc/issue.saved-by-$myName"
+    $privUtil mv "/etc/issue" "/etc/issue.saved-by-$myName"
   fi
 
   info "Run command: cp $file /etc/issue"
-  sudo cp "$file" "/etc/issue"
+  $privUtil cp "$file" "/etc/issue"
 }
 
 cmdList() {
@@ -692,9 +703,10 @@ EOF
 
 cmdRestore() {
 #   checkIfRoot
+  setPrivUtil
   checkFile "/etc/issue.saved-by-$myName" "Backup"
   info "Run command: mv /etc/issue.saved-by-$myName /etc/issue"
-  sudo mv /etc/issue.saved-by-$myName /etc/issue
+  $privUtil mv /etc/issue.saved-by-$myName /etc/issue
 }
 
 cmdShow() {
