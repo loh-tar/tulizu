@@ -106,13 +106,22 @@ checkFile() {
   fi
 }
 
-setPrivUtil() {
-  if [[ -x "/usr/bin/sudo" ]]; then
-    privUtil="sudo"
-  elif [[ -x "/usr/bin/doas" ]]; then
-    privUtil="doas"
-  else
-    exitError "Privilege escalation binary not found"
+runAsRoot() {
+  if [[ $UID -eq 0 ]]; then
+    print "User already UID 0"
+    rootUtil=""
+  elif [[ $UID -gt 0 ]]; then
+    if command -v "sudo" >/dev/null 2>&1; then
+      rootUtil=$(command -v "sudo")
+    elif command -v "doas" >/dev/null 2>&1; then
+      rootUtil=$(command -v "doas")
+    else
+      exitError "Privilege escalation binary not found"
+    fi
+
+    if [[ ! -x $rootUtil ]]; then
+      exitError "Privilege binary may not be executable!"
+    fi
   fi
 }
 
@@ -267,7 +276,7 @@ cmdInstall() {
   local -i ok=0
 
 #   checkIfRoot
-  setPrivUtil
+  runAsRoot
   if [[ -r "$file" ]]; then
     ok=1
   else
@@ -286,12 +295,12 @@ cmdInstall() {
   fi
 
   if [[ ! -f "/etc/issue.saved-by-$myName" ]]; then
-    info "Run command: mv /etc/issue /etc/issue.saved-by-$myName"
-    $privUtil mv "/etc/issue" "/etc/issue.saved-by-$myName"
+    info "Run command: $rootUtil mv /etc/issue /etc/issue.saved-by-$myName"
+    $rootUtil mv "/etc/issue" "/etc/issue.saved-by-$myName"
   fi
 
-  info "Run command: cp $file /etc/issue"
-  $privUtil cp "$file" "/etc/issue"
+  info "Run command: $rootUtil cp $file /etc/issue"
+  $rootUtil cp "$file" "/etc/issue"
 }
 
 cmdList() {
