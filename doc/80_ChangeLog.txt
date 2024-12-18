@@ -3,6 +3,8 @@ Not Yet Released  v0.3
 New tizu files:
   Debian, Thanks to Vidy007
 
+- Support not only sudo but also doas and run0 to become root
+  Thanks to J-D-Wifi-08
 - New command ekam (make reverse)
 - New Razor-Tag with option z
 - Add (more) text attribute tags
