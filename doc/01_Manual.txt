@@ -115,6 +115,8 @@ install
   /etc/issue.saved-by-tulizu and can be at anytime restored. The backup is
   created only if it not already exist, so you can try as many as you like
   without to lose your original file.
+  To acquire root rights for this task, the tools sudo, doas and run0 are
+  searched for in this order.
 
 show
   When you view a file containing a clear screen sequence is these removed

@@ -26,8 +26,8 @@ declare -r myVersion="0.2" # Okt 2017
 declare -r myDescription="View and customize ASCII art included /etc/issue files"
 declare -r issuePath="/usr/share/$myName/issue"
 declare -r tizuPath="/usr/share/$myName/tizu"
+declare    powerTool="" # May be set to sudo, doas, run0
 declare    tmpFile="$myName-generated.issue"
-declare    privUtil=""
 # As far as I the FHS understood can we place here our tmp file
 # FIXME: When FHS 3 is common used change to /run/user/...
 declare    tmpPath="/var/run/user/$UID"
@@ -106,14 +106,25 @@ checkFile() {
   fi
 }
 
-setPrivUtil() {
-  if [[ -x "/usr/bin/sudo" ]]; then
-    privUtil="sudo"
-  elif [[ -x "/usr/bin/doas" ]]; then
-    privUtil="doas"
-  else
-    exitError "Privilege escalation binary not found"
+runAsRoot() {
+  # We don't necessarily have to be root, we just need the right to change the issue file
+  # because we never run commands as root where more power is needed
+  if [[ ! -w /etc/issue && -z $powerTool ]] ; then
+    for tool in sudo doas run0 ; do
+      powerTool=$(command -v "$tool")
+      [[ -n $powerTool ]] && break
+    done
+
+    if [[ -z $powerTool ]] ; then
+      exitError "No privilege escalation tool found! Tried: sudo doas run0" "${FUNCNAME[1]:3}"
+    fi
+
+    info "Use privilege escalation tool: $powerTool"
   fi
+
+  info "Run command: $*"
+  # No quoting of "$powerTool" or it won't work if tulizu is run directly by root
+  $powerTool "$@"
 }
 
 # checkIfRoot() {
@@ -267,7 +278,7 @@ cmdInstall() {
   local -i ok=0
 
 #   checkIfRoot
-  setPrivUtil
+
   if [[ -r "$file" ]]; then
     ok=1
   else
@@ -286,12 +297,10 @@ cmdInstall() {
   fi
 
   if [[ ! -f "/etc/issue.saved-by-$myName" ]]; then
-    info "Run command: mv /etc/issue /etc/issue.saved-by-$myName"
-    $privUtil mv "/etc/issue" "/etc/issue.saved-by-$myName"
+    runAsRoot "mv" "/etc/issue" "/etc/issue.saved-by-$myName"
   fi
 
-  info "Run command: cp $file /etc/issue"
-  $privUtil cp "$file" "/etc/issue"
+  runAsRoot "cp" "$file" "/etc/issue"
 }
 
 cmdList() {
@@ -702,11 +711,8 @@ EOF
 }
 
 cmdRestore() {
-#   checkIfRoot
-  setPrivUtil
   checkFile "/etc/issue.saved-by-$myName" "Backup"
-  info "Run command: mv /etc/issue.saved-by-$myName /etc/issue"
-  $privUtil mv /etc/issue.saved-by-$myName /etc/issue
+  runAsRoot "mv" "/etc/issue.saved-by-$myName" "/etc/issue"
 }
 
 cmdShow() {
