@@ -688,6 +688,7 @@ EOF
     allColors="${allColors}${fullColor} "
     (( padSize = ${#fullColor} - 3 - ${#i}))
     # Fill padding with blanks https://stackoverflow.com/a/5349842
+    # shellcheck disable=SC2046 # We want word splitting here
     printf -v padding ' %.0s' $(eval "echo {1.."$((padSize))"}");
     colorNumberIdx="${colorNumberIdx}tuC${i}${padding} "
     (( i++ ))
