@@ -127,12 +127,6 @@ runAsRoot() {
   $powerTool "$@"
 }
 
-# checkIfRoot() {
-#   if [[ $UID -gt 0 ]]; then
-#     exitError "Only root can change the issue file" ${FUNCNAME[1]:3}
-#   fi
-# }
-
 parseTizuFile() {
   local inFile=$1
 
@@ -276,8 +270,6 @@ cmdInstall() {
   local file=${1:-"$tmpPath/$tmpFile"}
   local searchPath=("$PWD" "$tmpPath" "$issuePath")
   local -i ok=0
-
-#   checkIfRoot
 
   if [[ -r "$file" ]]; then
     ok=1
