@@ -24,8 +24,9 @@
 declare -r myName="tulizu"
 declare -r myVersion="0.2" # Okt 2017
 declare -r myDescription="View and customize ASCII art included /etc/issue files"
-declare -r issuePath="/usr/share/$myName/issue"
-declare -r tizuPath="/usr/share/$myName/tizu"
+declare -r docPath=${TULIZU_DOCPATH:-"/usr/share/doc/$myName"}
+declare -r issuePath=${TULIZU_ISSUEPATH:-"/usr/share/$myName/issue"}
+declare -r tizuPath=${TULIZU_TIZUPATH:-"/usr/share/$myName/tizu"}
 declare    powerTool="" # May be set to sudo, doas, run0
 declare    tmpFile="$myName-generated.issue"
 # As far as I the FHS understood can we place here our tmp file
@@ -187,11 +188,11 @@ makePattern() {
 #
 cmdDoc() {
   local docMatch
-  local docPath="/usr/share/doc/$myName"
 
   makePattern "$1"
 
-  mapfile -t docMatch < <(find "$docPath" -not -type d -iname "$pattern" | sort)
+  # -not -name '.*' to exclude e.g. .kate-swp files while hacking :-/
+  mapfile -t docMatch < <(find "$docPath" -not -type d -not -name '.*' -iname "$pattern" | sort)
 
   if [[ ${#docMatch[@]} -gt 1 ]]; then
     print "Available documentation:"

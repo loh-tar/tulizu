@@ -12,6 +12,17 @@ screenshots.
 
 ### Install
 
+An installation is not absolutely necessary. It's sufficient to download the
+latest code and _source_ the shipped _tulizu-env.sh_ file.
+
+    source /path/to/tulizu/source/tulizu-env.sh
+
+At least works this if your default shell is bash compatible. If not try to run
+_bash -i_ beforehand. The only disadvantage should be that command _doc_ shows
+no _SourceCode_ and _Example-tizu_ entries.
+
+That's also handy while hacking on tulizu.
+
 #### Packages
 
 Arch users may look in [AUR](https://aur.archlinux.org/packages/tulizu/)

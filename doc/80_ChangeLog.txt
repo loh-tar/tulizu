@@ -11,6 +11,7 @@ New tizu files:
 - Enhance option c to remove all colors
 - Use new version of agetty at show command, if available
 - Fix/improve wildcards in search pattern
+- Support non-install setups
 
 
 2017-10-24  v0.2
