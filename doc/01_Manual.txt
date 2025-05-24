@@ -1,4 +1,4 @@
-                                                           tulizu v0.2, Okt 2017
+                                                           tulizu v0.3, May 2025
 Index
 =======
 1- Introduction
@@ -365,7 +365,7 @@ Last but not least: Mom & Dad and archlinux.org
 
 8- Copying
 ============
-Copyright (C) 2016 loh.tar@googlemail.com
+Copyright (C) 2016, 2025 loh.tar@googlemail.com
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

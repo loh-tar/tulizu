@@ -2,7 +2,7 @@
 #
 #   tulizu: View and customize ASCII art included /etc/issue files
 #
-#   Copyright (C) 2016 loh.tar@googlemail.com
+#   Copyright (C) 2016, 2025 loh.tar@googlemail.com
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 # shellcheck disable=SC2034  # Unused variables - See HINT at the colors
 
 declare -r myName="tulizu"
-declare -r myVersion="0.2" # Okt 2017
+declare -r myVersion="0.3" # May 2025
 declare -r myDescription="View and customize ASCII art included /etc/issue files"
 declare -r docPath=${TULIZU_DOCPATH:-"/usr/share/doc/$myName"}
 declare -r issuePath=${TULIZU_ISSUEPATH:-"/usr/share/$myName/issue"}

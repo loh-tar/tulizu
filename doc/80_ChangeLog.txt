@@ -1,4 +1,4 @@
-Not Yet Released  v0.3
+2025-05-24  v0.3
 =======================================
 New tizu files:
   Debian, Thanks to Vidy007
