@@ -14,25 +14,34 @@ to help to build a nice data base of issue/tizu files.
 It's name, if it is not clear, is a quibble of 'issue tool' and is in such to be
 pronounced contracted like 'toolishoo'.
 
-**Last version is 0.2 released Okt, 2017**
+**Last version is v0.3, May 2025**
 
 ### Available Issues For Systems
 
-  - Arch Linux
-  - Black Arch
-  - BSD
-  - Parabola
-  - Raspberry Pi
+The number in parentheses indicate how many tizu files are available.
+
+  - Arch Linux (9)
+  - Black Arch (1)
+  - BSD (1)
+  - Debian (3)
+  - Parabola (1)
+  - Raspberry Pi (2)
 
 ### Screenshots
 
-These shots are here to give you an idea what you will get. They are slightly
-faked to become more handy. So don't be curious if you can't reproduce the exact
-output.
+These shots are here to give you an idea what you will get. Sometimes they are
+slightly fake to make it easier for me, or they are a little out of date in
+terms of the names you see. So don't be surprised if you can't reproduce the
+exact output.
 
 #### A brief glimpse of the collection
 
-![Brief Glimpse](brief-glimpse-collection.png)
+![Arch](arch-log-let-con.png)
+![Black Arch](black_arch-anon.png)
+![BSD](bsd1.png)
+![Debian](debian-alpha.png)
+![Parabola](parabola.png)
+![Raspi](raspi.png)
 
 #### List available files matching "arch*tizu"
 
