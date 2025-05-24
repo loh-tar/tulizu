@@ -244,7 +244,7 @@ cmdHelp() {
     echo "${ind}Use the long version with hyphen to distinguish from <pattern>"
     echo
     echo "${ind}make"
-    echo "${ind}${ind}tofile <outFile>${tab}Create new issue file as <outFile> insted of <tmpFile>"
+    echo "${ind}${ind}tofile <outFile>${tab}Create the new issue file as <outFile> instead of <tmpFile>"
     echo "${ind}${ind}opt <fileOpt>${tab}Set option supported by <inFile>"
     echo "${ind}${ind}nohint${tab}${tab}Print no info header"
     echo "${ind}${ind}noshow${tab}${tab}Print nothing, just write file"
