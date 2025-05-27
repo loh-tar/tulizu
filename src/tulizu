@@ -84,7 +84,7 @@ declare -A optCounter
 declare -A attributes
 
 #
-# Helper Functions
+# BEGIN Helper Functions
 #
 print() { printf "%s\n" "$*"; }
 info() { printf "$myName: %s\n" "$*" >&2; }
@@ -184,7 +184,7 @@ makePattern() {
 }
 
 #
-# Command Implementations
+# BEGIN Command Implementations
 #
 cmdDoc() {
   local docMatch
@@ -775,7 +775,7 @@ cmdShow() {
 }
 
 #
-# Main
+# BEGIN Main
 #
 
 # Newer versions of agetty can show itself an issue file, so we do not
