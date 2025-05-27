@@ -1,4 +1,4 @@
-## tulizu - View and customize ASCII art included /etc/issue files
+## tulizu - A tool with a database to switch and customize ASCII art included /etc/issue files
 
 **tulizu** is a pure bash script to view and switch getty issue files.
 Furthermore it may helpful at the creation process of such an issue file when
